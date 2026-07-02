@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { MapPin, Globe, GraduationCap, BookOpen, Buildings, Wrench } from "phosphor-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,8 +19,8 @@ const TAB_META = {
     heading: "Professional & Vocational",
     sub: "Empowering students with career-ready skills and technical expertise.",
   },
-  affiliated: {
-    heading: "Affiliated Institutions",
+  vocational: {
+    heading: "Vocational Institutions",
     sub: "A network of partner institutions extending the Alagappa legacy of excellence.",
   },
 };
@@ -29,17 +29,17 @@ const subNavItems = [
   { label: "Primary", tab: "primary", icon: BookOpen },
   { label: "Secondary", tab: "secondary", icon: GraduationCap },
   { label: "Professional & Vocational", tab: "professional", icon: Wrench },
-  { label: "Affiliated Institutions", tab: "affiliated", icon: Buildings },
+  { label: "Vocational Institutions", tab: "vocational", icon: Buildings },
 ];
 
+// Institution data with logos
 const primaryInstitutions = [
   {
     id: 1,
-    name: "Alagappa Matriculation Higher Secondary School",
+    name: "Alagappa Basic School",
     location: "Karaikudi, Tamil Nadu",
-    established: "1957",
     affiliation: "Tamil Nadu Matriculation Board",
-    image: "/Institutions/primary/alagappa-matric.jpg",
+    logo: "/logos/montessori.png",
     tag: "Matriculation",
     description:
       "One of the flagship institutions of the Alagappa Group, this school has shaped generations of learners in Karaikudi. With a sprawling campus, well-equipped laboratories, and a tradition of academic excellence, it prepares students from primary level through higher secondary with a strong emphasis on both curricular and co-curricular achievements.",
@@ -47,11 +47,10 @@ const primaryInstitutions = [
   },
   {
     id: 2,
-    name: "Alagappa Vidhyalaya",
+    name: "Alagappa Smart Start Play School and Daycare Center",
     location: "Karaikudi, Tamil Nadu",
-    established: "1948",
     affiliation: "Tamil Nadu State Board",
-    image: "/Institutions/primary/alagappa-vidhyalaya.jpg",
+    logo: "/logos/smartstart.png",
     tag: "State Board",
     description:
       "Founded as one of Dr. Alagappa Chettiar's earliest educational endeavours, Alagappa Vidhyalaya stands as a testament to his vision of accessible, quality primary education. The school follows the Tamil Nadu State Board curriculum and is renowned for its dedicated teaching faculty and nurturing environment that fosters curiosity and discipline in equal measure.",
@@ -59,11 +58,21 @@ const primaryInstitutions = [
   },
   {
     id: 3,
-    name: "Alagappa Model Higher Secondary School",
+    name: "Alagappa Montessori",
     location: "Karaikudi, Tamil Nadu",
-    established: "1962",
     affiliation: "Tamil Nadu State Board",
-    image: "/Institutions/primary/alagappa-model.jpg",
+    logo: "/logos/montessori.png",
+    tag: "Model School",
+    description:
+      "Established to serve as an exemplar of the Group's educational philosophy, this school integrates modern pedagogy with time-tested values. It offers classes from primary through higher secondary and is particularly noted for its science stream results and a competitive environment that consistently sends students to top engineering and medical colleges.",
+    highlights: ["STEM focus", "Outstanding board results", "Merit scholarship program", "Digital library"],
+  },
+  {
+    id: 3,
+    name: "Umayal Play School",
+    location: "Chennai, Tamil Nadu",
+    affiliation: "Tamil Nadu State Board",
+    logo: "/logos/umayalPlayschl.png",
     tag: "Model School",
     description:
       "Established to serve as an exemplar of the Group's educational philosophy, this school integrates modern pedagogy with time-tested values. It offers classes from primary through higher secondary and is particularly noted for its science stream results and a competitive environment that consistently sends students to top engineering and medical colleges.",
@@ -74,11 +83,10 @@ const primaryInstitutions = [
 const secondaryInstitutions = [
   {
     id: 1,
-    name: "Alagappa Higher Secondary School",
-    location: "Alagappapuram, Karaikudi",
-    established: "1952",
+    name: "Alagappa Matric Hr. Sec School",
+    location: "Chennai, Tamil Nadu",
     affiliation: "Tamil Nadu State Board",
-    image: "/Institutions/secondary/alagappa-hss.jpg",
+    logo: "/logos/cbsechn.png",
     tag: "Higher Secondary",
     description:
       "A cornerstone of secondary education in the Chettinad region, Alagappa Higher Secondary School offers an expansive range of academic streams including Science, Commerce, and Arts. The school's alumni network spans government, academia, and industry, a living testament to the quality of its foundational education over more than seven decades.",
@@ -90,8 +98,41 @@ const secondaryInstitutions = [
     location: "Karaikudi, Tamil Nadu",
     established: "1960",
     affiliation: "Tamil Nadu State Board",
-    image: "/Institutions/secondary/alagappa-girls.jpg",
+    logo: "/logos/girls.png",
     tag: "Girls' School",
+    description:
+      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
+  },
+  {
+    id: 2,
+    name: "Alagappa CBSE Academy",
+    location: "Karaikudi, Tamil Nadu",
+    affiliation: "Central Board",
+    logo: "/logos/cbse.png",
+    tag: "CBSE School",
+    description:
+      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
+  },
+  {
+    id: 2,
+    name: "Alagappa CBSE Academy",
+    location: "Chennai, Tamil Nadu",
+    affiliation: "Central Board",
+    logo: "/logos/cbsechn.png",
+    tag: "CBSE School",
+    description:
+      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
+  },
+  {
+    id: 2,
+    name: "Alagappa Matric Hr. Sec School",
+    location: "Karaikudi, Tamil Nadu",
+    affiliation: "Tamil Nadu State Board",
+    logo: "/logos/matric.png",
+    tag: "Matriculation School",
     description:
       "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
     highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
@@ -101,85 +142,106 @@ const secondaryInstitutions = [
 const professionalInstitutions = [
   {
     id: 1,
-    name: "Alagappa Chettiar College of Engineering & Technology",
-    shortName: "ACCET",
+    name: "Dr. Umayal Ramanathan College for Women",
     location: "Karaikudi, Tamil Nadu",
-    established: "1954",
-    affiliation: "Anna University",
-    image: "/Institutions/professional/accet.jpg",
-    tag: "Engineering",
+    affiliation: "Alagappa University",
+    logo: "/logos/urcw.png",
+    tag: "Arts & Science",
     description:
-      "ACCET is one of the oldest and most distinguished engineering colleges in Tamil Nadu, now an autonomous institution affiliated to Anna University. Spanning 14 undergraduate and several postgraduate programs in engineering and technology, ACCET's graduates occupy leadership positions across global technology and manufacturing firms. Its NAAC-accredited campus features advanced research labs, industry-linked curricula, and a vibrant placement cell.",
+      "URCW is one of the oldest and most distinguished engineering colleges in Tamil Nadu, now an autonomous institution vocational to Anna University. Spanning 14 undergraduate and several postgraduate programs in engineering and technology, ACCET's graduates occupy leadership positions across global technology and manufacturing firms. Its NAAC-accredited campus features advanced research labs, industry-linked curricula, and a vibrant placement cell.",
     highlights: ["NAAC Accredited", "14+ UG Programs", "Active industry tie-ups", "Robust placement record"],
   },
   {
     id: 2,
-    name: "Alagappa Polytechnic College",
+    name: "Alagappa College of Nursing",
     location: "Karaikudi, Tamil Nadu",
-    established: "1955",
-    affiliation: "DOTE, Tamil Nadu",
-    image: "/Institutions/professional/polytechnic.jpg",
-    tag: "Polytechnic",
-    description:
-      "Established a year after ACCET, the Polytechnic College was Dr. Alagappa Chettiar's answer to the urgent demand for trained technicians in post-independence India. It offers diploma programs in Mechanical, Civil, Electronics, and Computer Engineering and is affiliated to the Directorate of Technical Education (DOTE), Tamil Nadu. The college is celebrated for its hands-on workshops, strong industry linkages, and high employment rates among graduates.",
-    highlights: ["DOTE affiliated", "Hands-on workshops", "Diploma engineering", "High employability"],
-  },
-  {
-    id: 3,
-    name: "Alagappa College of Physical Education",
-    location: "Karaikudi, Tamil Nadu",
-    established: "1958",
     affiliation: "Alagappa University",
-    image: "/Institutions/professional/physical-education.jpg",
-    tag: "Physical Education",
+    logo: "/logos/nursing.png",
+    tag: "Nursing",
     description:
-      "One of only a handful of dedicated physical education colleges in South India, this institution trains future coaches, PE teachers, and sports administrators. Offering B.P.Ed, M.P.Ed, and M.Phil programs, the college boasts international-standard sports facilities including an athletics track, swimming pool, and multipurpose indoor courts. It has produced state and national-level athletes and coaches over its six-decade history.",
-    highlights: ["B.P.Ed & M.P.Ed programs", "National-level athletes", "Olympic-standard facilities", "Sports research"],
+      "The College of Nursing was established to meet the growing demand for skilled nursing professionals in the region. It offers undergraduate and postgraduate programs in nursing and is vocational to Alagappa University. The college is known for its comprehensive curriculum, modern infrastructure, and strong emphasis on clinical training.",
+    highlights: ["Vocational to Alagappa University", "Comprehensive nursing programs", "Modern infrastructure", "Strong clinical training"],
   },
+  
 ];
 
-const affiliatedInstitutions = [
+const vocationalInstitutions = [
   {
     id: 1,
-    name: "Alagappa College of Arts & Science",
-    shortName: "ACAS",
+    name: "Alagappa Performing Arts Academy",
     location: "Karaikudi, Tamil Nadu",
-    established: "1960",
     affiliation: "Alagappa University",
-    image: "/Institutions/affiliated/acas.jpg",
-    tag: "Arts & Science",
+    logo: "/logos/apaa.png",
+    tag: "Performing Arts",
     description:
       "ACAS is one of the premier arts and science colleges in the Chettinad belt, offering undergraduate and postgraduate programs across Commerce, Computer Science, Mathematics, Chemistry, Tamil, and English. Known for its research culture and competitive examination coaching, the college maintains a strong academic record and provides holistic development opportunities through an active Students' Union and cultural fest.",
     highlights: ["15+ UG/PG programs", "Research culture", "Competitive exam coaching", "Cultural activities"],
   },
   {
     id: 2,
-    name: "Alagappa University",
+    name: "Alagappa Institute of Technology",
     location: "Karaikudi, Tamil Nadu",
-    established: "1985",
-    affiliation: "UGC – State University",
-    image: "/Institutions/affiliated/alagappa-university.jpg",
+    affiliation: "Alagappa University",
+    logo: "/logos/algtechinst.png",
     tag: "University",
     description:
       "Established by the Government of Tamil Nadu in 1985 on 450 acres of land donated by the Alagappa family, Alagappa University is recognised by the University Grants Commission. It houses 14 full-fledged departments offering postgraduate, M.Phil., and Ph.D. programmes spanning Education, Management, Sciences, Technology, Tamil, and Women's Studies. The Directorate of Distance Education, launched in 1992, serves thousands of off-campus learners across India.",
     highlights: ["UGC Recognised", "450-acre campus", "Ph.D. programmes", "Distance education since 1992"],
   },
-  {
-    id: 3,
-    name: "Alagappa Institute of Management",
-    shortName: "AIM",
-    location: "Karaikudi, Tamil Nadu",
-    established: "1991",
-    affiliation: "Alagappa University",
-    image: "/Institutions/affiliated/aim.jpg",
-    tag: "Management",
-    description:
-      "AIM offers MBA and MCA programmes with a curriculum designed in consultation with industry partners. Its case-study driven pedagogy, live project mandates, and annual management summit bring students into direct contact with business practitioners. Graduates from AIM occupy mid and senior management roles in banking, consulting, IT, and manufacturing, with placements at leading national and multinational organisations.",
-    highlights: ["Industry-linked MBA", "MCA programme", "Annual management summit", "Strong placements"],
-  },
+ 
 ];
 
-// ─── SUBCOMPONENTS ────────────────────────────────────────────────────────────
+// Logo component
+function InstitutionLogo({ logo, initials }) {
+  const [imgError, setImgError] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  const handleError = () => {
+    if (!imgLoaded) setImgError(true);
+  };
+
+  const handleLoad = () => {
+    setImgLoaded(true);
+    setImgError(false);
+  };
+
+  if (!imgError && logo) {
+    return (
+      <img
+        src={logo}
+        alt={initials}
+        onError={handleError}
+        onLoad={handleLoad}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          padding: "8px",
+        }}
+      />
+    );
+  }
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg, #0d2444 0%, #1a3a6b 100%)",
+        color: "#4a9eff",
+        fontWeight: 800,
+        fontSize: "28px",
+      }}
+    >
+      {initials}
+    </div>
+  );
+}
+
+// ─── SUBCOMPONENTS ───────────────────────────────────────────────────────────
 
 function InstitutionCard({ institution, index }) {
   const isEven = index % 2 === 0;
@@ -195,12 +257,12 @@ function InstitutionCard({ institution, index }) {
       }}
       className="institution-row"
     >
-      {/* ── Image column ── */}
+      {/* ── Logo column ── */}
       <div
-        style={{ position: "relative", flex: "0 0 300px", width: "300px" }}
+        style={{ position: "relative", flex: "0 0 280px", width: "280px" }}
         className="institution-img-col"
       >
-        {/* subtle glow behind image */}
+        {/* subtle glow behind logo */}
         <div
           style={{
             position: "absolute",
@@ -213,30 +275,17 @@ function InstitutionCard({ institution, index }) {
           }}
         />
         <div style={{ position: "relative", zIndex: 1 }}>
-          {/* Fallback gradient placeholder if image missing */}
           <div
             style={{
               width: "100%",
-              aspectRatio: "4 / 3",
-              borderRadius: "14px",
+              aspectRatio: "1 / 1",
+              borderRadius: "16px",
               overflow: "hidden",
               boxShadow: "0 12px 36px rgba(10,22,40,0.14)",
-              background: "linear-gradient(135deg, #0d2444 0%, #1a3a6b 100%)",
+              background: "#fff",
             }}
           >
-            <img
-              src={institution.image}
-              alt={institution.name}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-              }}
-            />
+            <InstitutionLogo logo={institution.logo} initials={institution.shortName} />
           </div>
 
           {/* Floating badge */}
@@ -250,7 +299,6 @@ function InstitutionCard({ institution, index }) {
               padding: "8px 14px",
               borderRadius: "8px",
               boxShadow: "0 6px 20px rgba(10,22,40,0.4)",
-              maxWidth: "80%",
             }}
           >
             <div style={{ fontSize: "12px", fontWeight: 700, lineHeight: 1.3 }}>
@@ -425,7 +473,7 @@ function InstitutionSection({ institutions }) {
           .institution-img-col {
             flex: none !important;
             width: 100% !important;
-            max-width: 320px;
+            max-width: 280px;
             margin: 0 auto;
           }
         }
@@ -468,10 +516,10 @@ const overviewCategories = [
     description: "Colleges of Engineering, Technology, and Physical Education.",
   },
   {
-    tab: "affiliated",
+    tab: "vocational",
     icon: Buildings,
-    label: "Affiliated Institutions",
-    count: affiliatedInstitutions.length,
+    label: "Vocational Institutions",
+    count: vocationalInstitutions.length,
     color: "#6b1a5a",
     accent: "rgba(107,26,90,0.08)",
     border: "rgba(107,26,90,0.2)",
@@ -747,7 +795,7 @@ export default function Institutions() {
       {tab === "primary" && <InstitutionSection institutions={primaryInstitutions} />}
       {tab === "secondary" && <InstitutionSection institutions={secondaryInstitutions} />}
       {tab === "professional" && <InstitutionSection institutions={professionalInstitutions} />}
-      {tab === "affiliated" && <InstitutionSection institutions={affiliatedInstitutions} />}
+      {tab === "vocational" && <InstitutionSection institutions={vocationalInstitutions} />}
     </div>
   );
 }

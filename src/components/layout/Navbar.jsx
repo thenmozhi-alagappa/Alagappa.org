@@ -56,12 +56,12 @@ const navigationItems = [
       { title: "Academics", href: "/accomplishments?tab=academics" },
       { title: "Extracurricular", href: "/accomplishments?tab=extracurricular" },
       { title: "Sports", href: "/accomplishments?tab=sports" },
-      { title: "Admissions", href: "/accomplishments?tab=admissions" },
+      { title: "Admissions", href: "https://forms.gle/4Z4bK4FT3ZrpjYux6", external: true },
     ],
   },
   { title: "Gallery", href: "/gallery" },
   { title: "Contact", href: "/contact" },
-  { title: "Admissions", href: "/admissions", button: true },
+  { title: "Admissions", href: "https://forms.gle/4Z4bK4FT3ZrpjYux6", button: true, external: true },
   { title: "Donate", href: "/donate", button: true },
 ];
 
@@ -87,20 +87,61 @@ export default function Navbar() {
                 </span>
               </div>
             </div>
-            <div className="top-bar-socials" style={{ display: "flex", alignItems: "center", gap: "6px", padding: "0 16px", flexShrink: 0 }}>
-              {[
-                { Icon: FacebookLogo, label: "Facebook" },
-                { Icon: TwitterLogo, label: "Twitter" },
-                { Icon: GoogleLogo, label: "Google" },
-                { Icon: InstagramLogo, label: "Instagram" },
-                { Icon: LinkedinLogo, label: "LinkedIn" },
-                { Icon: YoutubeLogo, label: "YouTube" },
-              ].map(({ Icon, label }) => (
-                <a key={label} href="#" aria-label={label} className="social-icon">
-                  <Icon size={14} weight="bold" />
-                </a>
-              ))}
-            </div>
+          <div
+  className="top-bar-socials"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    padding: "0 16px",
+    flexShrink: 0,
+  }}
+>
+  {[
+    {
+      Icon: FacebookLogo,
+      label: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61578774906657",
+    },
+    {
+      Icon: TwitterLogo,
+      label: "Twitter",
+      href: "https://x.com/Alagappagr14894",
+    },
+    // Remove this if you don't have a Google page
+    {
+      Icon: GoogleLogo,
+      label: "Google",
+      href: "#",
+    },
+    {
+      Icon: InstagramLogo,
+      label: "Instagram",
+      href: "https://www.instagram.com/alagappagroups?igsh=MXR0NGJjbmI0YWI5Zw==",
+    },
+    {
+      Icon: LinkedinLogo,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/alagappa-group-of-educational-institutions-a783573a5/",
+    },
+    {
+      Icon: YoutubeLogo,
+      label: "YouTube",
+      href: "https://www.youtube.com/@thealagappagroup1288",
+    },
+  ].map(({ Icon, label, href }) => (
+    <a
+      key={label}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="social-icon"
+    >
+      <Icon size={14} weight="bold" />
+    </a>
+  ))}
+</div>
           </div>
         </div>
 
@@ -205,7 +246,12 @@ export default function Navbar() {
             {navigationItems.map((item) =>
               item.button ? (
                 <div key={item.title} style={{ padding: "0 6px", display: "flex", alignItems: "center" }}>
-                  <Link to={item.href} className="gradient-btn-wrap">
+                  <Link
+                    to={item.href}
+                    className="gradient-btn-wrap"
+                    target={item.external ? "_blank" : "_self"}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                  >
                     <span className="gradient-btn-inner">{item.title}</span>
                   </Link>
                 </div>
@@ -239,7 +285,13 @@ export default function Navbar() {
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
                       {item.children.map((child) => (
-                        <Link key={child.title} to={child.href} onClick={() => setOpenDropdown(null)}>
+                        <Link
+                          key={child.title}
+                          to={child.href}
+                          onClick={() => setOpenDropdown(null)}
+                          target={child.external ? "_blank" : "_self"}
+                          rel={child.external ? "noopener noreferrer" : undefined}
+                        >
                           {child.title}
                         </Link>
                       ))}
@@ -312,6 +364,8 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className="gradient-btn-wrap"
                     style={{ width: "100%" }}
+                    target={item.external ? "_blank" : "_self"}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
                     <span className="gradient-btn-inner" style={{ width: "100%", justifyContent: "center" }}>
                       {item.title}
@@ -344,6 +398,8 @@ export default function Navbar() {
                           to={child.href}
                           onClick={() => { setMobileOpen(false); setOpenDropdown(null); }}
                           className="mobile-sub-link"
+                          target={child.external ? "_blank" : "_self"}
+                          rel={child.external ? "noopener noreferrer" : undefined}
                         >
                           {child.title}
                         </Link>

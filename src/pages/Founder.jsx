@@ -10,300 +10,86 @@ import {
   Lightbulb,
   Flag,
   Gift,
+  DownloadSimple,
 } from "phosphor-react";
+import {
+  founderMeta,
+  founderSections,
+  audioSpeeches,
+  writtenSpeeches,
+  lettersBy,
+  lettersTo,
+  distinguishedPersonalities,
+  historyTimeline,
+  TAB_META,
+  subNavItems,
+  groupByCategory,
+} from "../data/FounderData";
 
-// ── Static data ──────────────────────────────────────────────────────────────
-
-const founderMeta = {
-  name: "Padma Bhushan Dr. RM. Alagappa Chettiar",
-  credentials: "M.A., D.Litt., LL.D., Barrister-at-Law",
-  tagline: "Philanthropist · Educationalist · Visionary",
-  born: "6th April 1909",
-  died: "1957",
-  birthPlace: "Kottaiyur, Sivaganga District, Tamil Nadu",
-  image: "/founder/alagappa-chettiar.jpg",
-  highlights: [
-    { label: "Institutions Founded", value: "20+" },
-    { label: "Alumni Produced", value: "30L+" },
-    { label: "Acres Donated", value: "1,000+" },
-    { label: "Years of Legacy", value: "75+" },
-  ],
+// Maps the string icon keys stored in founderData.js to the actual
+// phosphor-react icon components used at render time.
+const ICONS = {
+  User,
+  GraduationCap,
+  Briefcase,
+  Medal,
+  Books,
+  Handshake,
+  Lightbulb,
+  Flag,
+  Gift,
 };
 
-const founderSections = [
-  {
-    key: "birth",
-    label: "Birth",
-    icon: User,
-    type: "text",
-    content:
-      "Born on 6th April 1909 in Kottaiyur, Sivaganga District, Tamil Nadu, into the illustrious Nattukotai Chettiar community — renowned across South and Southeast Asia for commerce, banking, and civic spirit.",
-  },
-  {
-    key: "education",
-    label: "Education",
-    icon: GraduationCap,
-    type: "list",
-    items: [
-      "M.A. in Literature, Presidency College, Madras",
-      "Barrister-at-Law, Temple, England",
-    ],
-  },
-  {
-    key: "business",
-    label: "Business Acumen",
-    icon: Briefcase,
-    type: "list",
-    items: [
-      "Pioneered in textiles — founded Cochin Textiles (1937) and Alagappa Textiles near Thrissur, Kerala; the staff township was named Alagappa Nagar.",
-      "Diversified across rubber plantations in Malaya, tin mines in Burma, textile mills in Kerala, insurance companies in Calcutta, hotels and real estate in Bombay, plantations in Coorg, cinema theatres in Madras, a flourishing stock exchange company, and a private airline — Jupiter Airways.",
-      "Referred to as the unsung business maharaja of South India in the thirties and forties.",
-      "Knighted by the British Government in the 1946 New Year Honours at age 37 — a distinction he renounced when India attained independence.",
-      "Transformed a vast scrub jungle at Karaikudi into a galaxy of educational institutions — proof of his vision beyond commerce.",
-    ],
-  },
-  {
-    key: "awards",
-    label: "Awards & Honours",
-    icon: Medal,
-    type: "awards",
-    items: [
-      { badge: "D.Litt. — 1943", detail: "Conferred by Annamalai University" },
-      { badge: "LL.D. — 1944", detail: "Conferred by the University of Madras" },
-      {
-        badge: "Knighthood — 1945",
-        detail: "Awarded by the British Government at age 37; renounced upon Indian independence",
-      },
-      {
-        badge: "Padma Bhushan — 1957",
-        detail:
-          "Conferred by the President of India on 26 January 1957 — the highest civilian honour he received",
-      },
-    ],
-  },
-  {
-    key: "education-contrib",
-    label: "Contributions in Education",
-    icon: Books,
-    type: "list",
-    preamble:
-      "Harboring a firm conviction that education is an absolute must for a human being to become productive, wholesome, and humane, his generous donations led to the establishment of:",
-    items: [
-      "Alagappa College of Technology Campus — Anna University, Chennai",
-      "Engineering college at Annamalai University, Chidambaram",
-      "Alagappa Chettiar Government College of Engineering & Technology, Karaikudi",
-      "Alagappa Arts College, Karaikudi",
-      "Alagappa College of Polytechnic, Karaikudi",
-      "Alagappa Physical Education College, Karaikudi",
-      "Alagappa Model Higher Secondary School, Karaikudi",
-      "Alagappa Matriculation School, Chennai",
-      "Alagappa Primary School & Montessori School, Karaikudi",
-      "Donation to Lady Doak College, Madurai",
-    ],
-  },
-  {
-    key: "social",
-    label: "Social Service",
-    icon: Handshake,
-    type: "list",
-    items: [
-      "Donated ₹1 Lakh to Mahatma Gandhi at Thakkar Baba Vidyalaya",
-      "Funded development of the Kottaiyur township infrastructure",
-      "Donated to establish the South Indian Educational Society, New Delhi (1948)",
-      "Donated to establish higher education in Malaysia",
-      "Funded publication of Tamil Kalangiyam",
-      "Donated to the Cochin Cyclone Relief Fund",
-      "Funded a maternity hospital and childcare centre in Cochin",
-      "Funded the morning food scheme for Cochin children",
-      "Established the South Indian Chamber of Commerce in Cochin",
-      "Founded the Ramanujan Institute of Mathematics in Chennai — a centre of mathematical research",
-      "Funded students from Cochin to study abroad and supported indigenous medicine research",
-    ],
-  },
-  {
-    key: "visionary",
-    label: "A Visionary",
-    icon: Lightbulb,
-    type: "text",
-    content:
-      'Dr. Alagappa Chettiar convinced Prime Minister Nehru to house a National Research Institute within the Alagappa campus. His magnificent gift of 300 acres of land and ₹15 Lakhs enabled the Government of India to establish the Central Electro Chemical Research Institute (CECRI) at Karaikudi, inaugurated on 14 January 1953. As Vice President Dr. S. Radhakrishnan remarked at the opening: "Being a businessman himself, Dr. Alagappa Chettiar is aware of the industrial possibilities of our country and the need for scientific, technical and technological education. In his lifetime he has built a monument for himself — you have only to look around."',
-  },
-  {
-    key: "patriot",
-    label: "A Patriot",
-    icon: Flag,
-    type: "text",
-    content:
-      "A patriot to the core, Dr. Alagappa Chettiar actively supported Mahatma Gandhi's Satyagraha movement. He lent his fleet of aircraft from Jupiter Airways to the Government of India for lifting troops during Hyderabad's integration — never flinching even when some of his planes crashed in their mission.",
-  },
-  {
-    key: "philanthropy",
-    label: "Philanthropy",
-    icon: Gift,
-    type: "text",
-    content:
-      'When he passed away prematurely at age 48, Dr. Alagappa Chettiar had redefined philanthropy and contributed more to the betterment of education in Tamil Nadu than any other person of eminence. His crowning act of giving was donating his own personal residence in Kottaiyur to found a Women\'s College. As Rajaji observed: "Dr. Alagappa Chettiar had given away freely. Students should develop that quality — cultivate courage and emulate the spirit of Dr. Alagappa Chettiar."',
-  },
-];
+// ── Sub-component: DownloadButton ────────────────────────────────────────────
 
-const audioSpeeches = [
-  {
-    id: 1,
-    title: "Last Speech to Engineering Students",
-    date: "February 15, 1957",
-    description:
-      "Dr. Alagappa Chettiar's final address to engineering students, delivered just two days before his passing. In this moving speech, he urged the young engineers to dedicate their skills to the service of the nation and its people.",
-    audioSrc: "/audio/last-speech-engineering-students.mp3",
-  },
-  {
-    id: 2,
-    title: "College Day at Teacher's Training College",
-    date: "February 18, 1955",
-    description:
-      "An inspiring address delivered during the annual College Day celebrations at the Alagappa Teacher's Training College, where he spoke about the sacred duty of educators in shaping the future of India.",
-    audioSrc: "/audio/college-day-teachers-training.mp3",
-  },
-  {
-    id: 3,
-    title: "Foundation Stone for Hobby Centre",
-    date: "October 9, 1955",
-    description:
-      "Speech delivered at the laying of the foundation stone for the Hobby Centre, reflecting Dr. Alagappa Chettiar's belief in holistic education that nurtures creativity and extracurricular pursuits alongside academics.",
-    audioSrc: "/audio/foundation-stone-hobby-centre.mp3",
-  },
-  {
-    id: 4,
-    title: 'Ode to Founder — "Vallal Vazhthu"',
-    date: "Tribute",
-    description:
-      "A tribute composition dedicated to Dr. Alagappa Chettiar, celebrating his vision, generosity, and the lasting impact of his contributions to education and society.",
-    audioSrc: "/audio/vallal-vazhthu.mp3",
-  },
-];
-
-const writtenSpeeches = [
-  {
-    id: 1,
-    title: "CECRI Foundation Stone Ceremony",
-    date: "July 25, 1948",
-    description:
-      "Address at the laying of the foundation stone for the Central Electrochemical Research Institute (CECRI) at Karaikudi, in the distinguished presence of Prime Minister Pandit Jawaharlal Nehru. Dr. Alagappa Chettiar spoke of his vision for advancing scientific research in India and the importance of self-reliance in technology.",
-  },
-  {
-    id: 2,
-    title: "CECRI Opening Ceremony",
-    date: "January 14, 1953",
-    description:
-      "Speech delivered at the formal opening of CECRI, graced by the presence of Vice President Dr. S. Radhakrishnan. Dr. Alagappa Chettiar reflected on the journey from the laying of the foundation stone to the realization of a world-class research facility.",
-  },
-  {
-    id: 3,
-    title: "A.C. College of Technology Foundation Ceremony",
-    date: "February 19, 1953",
-    description:
-      "Address at the foundation stone laying ceremony of A.C. College of Technology, in the presence of President Dr. Rajendra Prasad. This speech outlined Dr. Alagappa Chettiar's commitment to technical education as a cornerstone of national development.",
-  },
-  {
-    id: 4,
-    title: "Madras University Convocation Address",
-    date: "August 18, 1954",
-    description:
-      "A distinguished convocation address at the University of Madras, where Dr. Alagappa Chettiar shared his thoughts on the role of universities in fostering innovation, character, and national progress.",
-  },
-  {
-    id: 5,
-    title: "Messages Regarding Dr. S.S. Bhatnagar's Demise",
-    date: "June 6, 1955",
-    description:
-      "Heartfelt messages penned by Dr. Alagappa Chettiar on the passing of Dr. Shanti Swarup Bhatnagar, the eminent scientist and founding Director-General of CSIR, with whom he had shared a deep bond over the establishment of CECRI.",
-  },
-  {
-    id: 6,
-    title: "Final Speech to Engineering Students",
-    date: "February 15, 1957",
-    description:
-      "The written transcript of Dr. Alagappa Chettiar's last public address, delivered to engineering students. His parting words encapsulated his lifelong belief in the transformative power of education and the responsibility of the educated to serve society.",
-  },
-];
-
-const lettersBy = [
-  { id: 1,  name: "Pandit Jawaharlal Nehru",  role: "Prime Minister of India",          year: "1946", image: "/leaders/nehru.jpg",           summary: "Dr. Alagappa Chettiar wrote to Prime Minister Nehru regarding his vision for establishing a national-level research institute and his commitment to furthering the cause of scientific research in India.", hasScan: true,  letterSrc: "/letters/nehru-1946.html" },
-  { id: 2,  name: "Dr. S. Radhakrishnan",     role: "Vice President of India",          year: "1955", image: "/leaders/radhakrishnan.jpg",   summary: "Correspondence with the Vice President of India discussing the progress of CECRI and the expanding scope of educational institutions in Karaikudi.", hasScan: true,  letterSrc: "/letters/radhakrishnan-1955.html" },
-  { id: 3,  name: "Dr. Rajendra Prasad",      role: "President of India",               year: "1955", image: "/leaders/rajendra-prasad.jpg", summary: "A letter to the President of India updating him on the developments at the Alagappa educational institutions and inviting his continued patronage and guidance.", hasScan: true,  letterSrc: "/letters/rajendra-prasad-1955.html" },
-  { id: 4,  name: "Gopala Reddi",             role: "Chief Minister of Andhra Pradesh", year: "1956", image: "/leaders/gopala-reddi.jpg",    summary: "Correspondence with the Chief Minister of Andhra Pradesh discussing educational development and collaboration across the southern states.", hasScan: true,  letterSrc: "/letters/gopala-reddi-1956.html" },
-  { id: 5,  name: "K. Hanumanthaiya",         role: "Chief Minister of Mysore",         year: "1953", image: "/leaders/hanumanthaiya.jpg",   summary: "Letter to the Chief Minister of Mysore on matters pertaining to educational expansion and the role of industry in supporting academic institutions.", hasScan: true,  letterSrc: "/letters/hanumanthaiya-1953.html" },
-  { id: 6,  name: "K. Kamaraj",               role: "Chief Minister of Madras",         year: "1955", image: "/leaders/kamaraj.jpg",         summary: "Correspondence with the Chief Minister of Madras regarding educational policy, institutional development, and the shared goal of making quality education accessible to all.", hasScan: true,  letterSrc: "/letters/kamaraj-1955.html" },
-  { id: 7,  name: "C. Rajagopalachari",       role: "Governor-General of India",        year: "1952", image: "/leaders/rajaji.jpg",          summary: "A letter to the former Chief Minister of Madras and Governor-General of India, exchanging views on education, governance, and the future of the nation.", hasScan: true,  letterSrc: "/letters/rajaji-1952.html" },
-  { id: 8,  name: "Rajkumari Amrit Kaur",     role: "Minister for Health, India",       year: "1953", image: "/leaders/amrit-kaur.jpg",      summary: "Correspondence with India's first Minister for Health discussing the establishment of the maternity hospital and healthcare facilities in the Karaikudi region.", hasScan: true,  letterSrc: "/letters/amrit-kaur-1953.html" },
-  { id: 9,  name: "Sir M. Visvesvaraya",      role: "Engineer & Bharat Ratna",          year: "1955", image: "/leaders/visvesvaraya.jpg",    summary: "A letter to the legendary engineer and Bharat Ratna recipient, seeking his counsel on engineering education and industrial development.", hasScan: false },
-  { id: 10, name: "Malcolm MacDonald",        role: "UK High Commissioner",             year: "1955", image: "/leaders/malcolm-macdonald.jpg", summary: "Correspondence with the UK High Commissioner on matters related to business, governance, and the advancement of educational initiatives.", hasScan: true,  letterSrc: "/letters/malcolm-macdonald-1955.html" },
-  { id: 11, name: "Sir C.V. Raman",           role: "Nobel Laureate & Scientist",       year: "1957", image: "/leaders/cv-raman.jpg",        summary: "One of the final correspondences by Dr. Alagappa Chettiar, written to Nobel Laureate Sir C.V. Raman, reflecting on science, research, and the future of CECRI.", hasScan: true,  letterSrc: "/letters/cv-raman-1957.html" },
-];
-
-const lettersTo = [
-  { id: 1, name: "Mrs. Indira Gandhi",      role: "Congress Leader",                  year: "1956", image: "/leaders/indira-gandhi.jpg",   summary: "A letter from Mrs. Indira Gandhi, then a prominent Congress leader, appreciating Dr. Alagappa Chettiar's contributions to education and expressing support for his endeavours.", hasScan: false },
-  { id: 2, name: "Pandit Jawaharlal Nehru", role: "Prime Minister of India",          year: "1945", image: "/leaders/nehru.jpg",           summary: "Prime Minister Nehru's letter acknowledging Dr. Alagappa Chettiar's generous contributions to national causes and his vision for establishing research institutions in India.", hasScan: false },
-  { id: 3, name: "Dr. S. Radhakrishnan",   role: "Vice President of India",          year: "1956", image: "/leaders/radhakrishnan.jpg",   summary: "The Vice President's letter commending Dr. Alagappa Chettiar for his selfless dedication to the cause of education and scientific research in India.", hasScan: false },
-  { id: 4, name: "Dr. Rajendra Prasad",    role: "President of India",               year: "1956", image: "/leaders/rajendra-prasad.jpg", summary: "A letter from the President of India praising Dr. Alagappa Chettiar's institution-building efforts and their positive impact on the nation's educational landscape.", hasScan: false },
-  { id: 5, name: "G.D. Birla",             role: "Industrialist & Philanthropist",   year: "1955", image: "/leaders/gd-birla.jpg",        summary: "Correspondence from the renowned industrialist G.D. Birla, recognizing Dr. Alagappa Chettiar as a fellow visionary in using industrial wealth for the betterment of society through education.", hasScan: false },
-  { id: 6, name: "K.M. Munshi",            role: "Lawyer, Politician & Educationist",year: "1955", image: "/leaders/km-munshi.jpg",       summary: "A letter from K.M. Munshi acknowledging the remarkable achievements of Dr. Alagappa Chettiar in the field of education and national service.", hasScan: true,  letterSrc: "/letters/km-munshi-1955.html" },
-];
-
-const distinguishedPersonalities = [
-  { id: 1,  name: "Pandit Jawaharlal Nehru",  role: "Prime Minister of India",          year: "1946", description: "India's first Prime Minister laid the foundation stone for CECRI in 1948, acknowledging Dr. Alagappa Chettiar's extraordinary contribution to scientific research and education in India.", image: "/leaders/nehru.jpg" },
-  { id: 2,  name: "Dr. S. Radhakrishnan",     role: "Vice President of India",          year: "1955", description: "The philosopher-statesman inaugurated CECRI in 1953 and maintained a deep admiration for Dr. Alagappa Chettiar's selfless dedication to the advancement of science and education.", image: "/leaders/radhakrishnan.jpg" },
-  { id: 3,  name: "Dr. Rajendra Prasad",      role: "President of India",               year: "1955", description: "The President of India laid the foundation stone for A.C. College of Technology in 1953, recognizing Dr. Alagappa Chettiar's vision for technical education in the country.", image: "/leaders/rajendra-prasad.jpg" },
-  { id: 4,  name: "Mrs. Indira Gandhi",       role: "Prime Minister of India",          year: "1956", description: "Then a prominent Congress leader, Mrs. Gandhi corresponded with Dr. Alagappa Chettiar, appreciating his educational endeavours and their impact on nation-building.", image: "/leaders/indira-gandhi.jpg" },
-  { id: 5,  name: "K. Kamaraj",              role: "Chief Minister of Madras",         year: "1955", description: "The beloved leader of Tamil Nadu shared Dr. Alagappa Chettiar's passion for accessible education and collaborated on initiatives to expand educational opportunities across the state.", image: "/leaders/kamaraj.jpg" },
-  { id: 6,  name: "C. Rajagopalachari",      role: "Chief Minister of Madras",         year: "1952", description: "Rajaji, the last Governor-General of India, held Dr. Alagappa Chettiar in high regard for his contributions to education and exchanged views on governance and institutional development.", image: "/leaders/rajaji.jpg" },
-  { id: 7,  name: "K. Hanumanthaiya",        role: "Chief Minister of Mysore",         year: "1953", description: "The Chief Minister of Mysore engaged with Dr. Alagappa Chettiar on matters of educational expansion and the role of private philanthropy in supporting public institutions.", image: "/leaders/hanumanthaiya.jpg" },
-  { id: 8,  name: "Gopala Reddi",            role: "Chief Minister of Andhra Pradesh", year: "1956", description: "Corresponded with Dr. Alagappa Chettiar on educational development and collaboration between the southern states in building academic institutions.", image: "/leaders/gopala-reddi.jpg" },
-  { id: 9,  name: "Rajkumari Amrit Kaur",    role: "Minister for Health, India",       year: "1953", description: "India's first Health Minister appreciated Dr. Alagappa Chettiar's philanthropic work in healthcare, including the establishment of the maternity hospital for the community.", image: "/leaders/amrit-kaur.jpg" },
-  { id: 10, name: "Sir C.V. Raman",          role: "Nobel Laureate & Scientist",       year: "1957", description: "The Nobel Prize-winning physicist shared a mutual respect with Dr. Alagappa Chettiar, united by their commitment to advancing scientific research and education in India.", image: "/leaders/cv-raman.jpg" },
-  { id: 11, name: "Sir M. Visvesvaraya",     role: "Engineer & Bharat Ratna",         year: "1955", description: "The legendary engineer and statesman provided counsel to Dr. Alagappa Chettiar on engineering education and industrial development, recognizing a kindred spirit in institution-building.", image: "/leaders/visvesvaraya.jpg" },
-  { id: 12, name: "G.D. Birla",             role: "Industrialist & Philanthropist",   year: "1955", description: "The renowned industrialist recognized Dr. Alagappa Chettiar as a fellow visionary who channeled industrial wealth into the betterment of society through education and research.", image: "/leaders/gd-birla.jpg" },
-];
-
-const historyTimeline = [
-  { year: "1909",  title: "Birth of Dr. Alagappa Chettiar",            description: "Dr. Ramanathan Muthiah Alagappa Chettiar was born on April 6, 1909, in Kottaiyur, Sivaganga District, Tamil Nadu. From this modest village, he would rise to become one of India's greatest industrialists, educationists, and philanthropists." },
-  { year: "1937",  title: "Founded Cochin Textiles",                    description: "Dr. Alagappa Chettiar established Cochin Textiles, marking the beginning of a vast business empire that would eventually span rubber plantations, tin mines, insurance, hotels, cinema theaters, and an airline." },
-  { year: "1940s", title: "Established First Educational Institutions", description: "Driven by his belief that education was the foundation of national progress, Dr. Alagappa Chettiar began establishing educational institutions in Karaikudi and Chennai, laying the groundwork for what would become a comprehensive educational ecosystem." },
-  { year: "1945",  title: "Knighted by British Government",             description: "In recognition of his exceptional achievements in industry and philanthropy, Dr. Alagappa Chettiar was knighted at the young age of 37. He would later renounce this title upon India's independence, choosing to stand with his newly free nation." },
-  { year: "1948",  title: "CECRI Foundation Stone with Nehru",          description: "Prime Minister Pandit Jawaharlal Nehru laid the foundation stone for the Central Electrochemical Research Institute (CECRI) on July 25, 1948. Dr. Alagappa Chettiar donated 300 acres of land and Rs. 15 lakhs for this national research institute." },
-  { year: "1953",  title: "CECRI Opened; AC Tech Foundation Stone",     description: "A landmark year: CECRI was formally opened by Vice President Dr. S. Radhakrishnan on January 14. On February 19, President Dr. Rajendra Prasad laid the foundation stone for A.C. College of Technology, one of India's premier engineering institutions." },
-  { year: "1957",  title: "Padma Bhushan; Passing of the Founder",      description: "Dr. Alagappa Chettiar received the Padma Bhushan on January 26, 1957, in recognition of his extraordinary contributions. Tragically, he passed away on February 17, 1957, at the age of 48, leaving behind a legacy that continues to inspire generations." },
-  { year: "1968",  title: "Mrs. Umayal Ramanathan's Generous Donation", description: "Carrying forward the family's tradition of philanthropy, Mrs. Umayal Ramanathan donated 450 acres of land to the government, ensuring the continued growth and expansion of educational and research institutions in the region." },
-  { year: "1985",  title: "Alagappa University Established",            description: "Alagappa University was established in Karaikudi, fulfilling the founder's dream of a comprehensive university that would serve as a centre of academic excellence. The university has since grown into a renowned institution with diverse academic programmes." },
-  { year: "1999",  title: "Alagappa Institute of Technology Established",description: "The Alagappa Institute of Technology was established, expanding the group's commitment to technical education and producing skilled engineers and technologists for the nation." },
-  { year: "2005",  title: "Performing Arts Academy Founded",             description: "The Alagappa Performing Arts Academy was founded, reflecting the group's belief in the importance of arts and culture alongside academic and technical education, nurturing creativity and cultural heritage." },
-  { year: "2018",  title: "Dr. Vairavan Receives Honorary Doctorate",   description: "Dr. Vairavan was honoured with an honorary doctorate, recognizing his dedicated service to the Alagappa institutions and his role in carrying forward the founder's vision of educational excellence into the modern era." },
-];
-
-const TAB_META = {
-  profile:        { heading: "Founder's Profile",      sub: "The life and legacy of Dr. RM. Alagappa Chettiar" },
-  speeches:       { heading: "Speeches",               sub: "The words that shaped a movement" },
-  correspondence: { heading: "Correspondence",          sub: "Letters and official communications of the Founder" },
-  leaders:        { heading: "Leaders & Dignitaries",  sub: "Tributes from statesmen who witnessed his work" },
-  history:        { heading: "History",                sub: "A timeline of an extraordinary life" },
-};
-
-const subNavItems = [
-  { label: "Profile",              tab: "profile" },
-  { label: "Speeches",             tab: "speeches" },
-  { label: "Correspondence",       tab: "correspondence" },
-  { label: "Leaders & Dignitaries",tab: "leaders" },
-  { label: "History",              tab: "history" },
-];
+function DownloadButton({ href, label = "Download", filename }) {
+  return (
+    <a
+      href={href}
+      download={filename ?? true}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "6px",
+        padding: "8px 14px",
+        borderRadius: "8px",
+        background: "rgba(74,158,255,0.14)",
+        border: "1px solid rgba(74,158,255,0.35)",
+        color: "#4a9eff",
+        fontSize: "12px",
+        fontWeight: 700,
+        letterSpacing: "0.04em",
+        textTransform: "uppercase",
+        textDecoration: "none",
+        cursor: "pointer",
+        transition: "background 0.15s ease, transform 0.15s ease",
+        flexShrink: 0,
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(74,158,255,0.24)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(74,158,255,0.14)"; }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <DownloadSimple size={14} weight="bold" />
+      {label}
+    </a>
+  );
+}
 
 // ── Sub-component: LetterCard ────────────────────────────────────────────────
+// Clickable letters open the original scan directly in a new browser tab.
 
-function LetterCard({ letter, onOpen }) {
+function LetterCard({ letter }) {
   const [imgError, setImgError] = useState(false);
   const clickable = letter.hasScan;
 
+  const Wrapper = clickable ? "a" : "div";
+  const wrapperProps = clickable
+    ? { href: letter.letterSrc, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <div
-      onClick={() => clickable && onOpen(letter)}
+    <Wrapper
+      {...wrapperProps}
       style={{
         background: "#fff",
         borderRadius: "16px",
@@ -311,10 +97,11 @@ function LetterCard({ letter, onOpen }) {
         boxShadow: "0 4px 20px rgba(26,58,107,0.10)",
         display: "flex",
         flexDirection: "column",
+        textDecoration: "none",
         cursor: clickable ? "pointer" : "default",
         opacity: clickable ? 1 : 0.68,
         transition: "transform 0.18s ease, box-shadow 0.18s ease",
-        minHeight: "320px",
+        height: "480px",
       }}
       onMouseEnter={(e) => {
         if (clickable) {
@@ -329,32 +116,44 @@ function LetterCard({ letter, onOpen }) {
         }
       }}
     >
-      <div style={{ background: "linear-gradient(160deg, #cce8ff 0%, #ddf0ff 100%)", flex: "0 0 52%", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", width: "130px", height: "130px", borderRadius: "50%", background: "rgba(74,158,255,0.15)" }} />
-        {!imgError ? (
-          <img src={letter.image ?? `/leaders/${letter.name.toLowerCase().replace(/[\s.]+/g, "-").replace(/[^a-z0-9-]/g, "")}.jpg`} alt={letter.name} onError={() => setImgError(true)} style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", border: "3px solid rgba(74,158,255,0.45)", position: "relative", zIndex: 1, boxShadow: "0 4px 16px rgba(26,58,107,0.18)" }} />
-        ) : (
-          <div style={{ width: "100px", height: "100px", borderRadius: "50%", background: "linear-gradient(135deg, #4a9eff33 0%, #1a3a6b22 100%)", border: "3px solid rgba(74,158,255,0.45)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", zIndex: 1 }}>
-            <span style={{ fontSize: "36px", fontWeight: 800, color: "#1a3a6b", opacity: 0.6 }}>{letter.name.charAt(0)}</span>
-          </div>
-        )}
-        <div style={{ position: "absolute", top: "12px", right: "12px", fontSize: "10px", fontWeight: 700, color: "#1a3a6b", background: "rgba(74,158,255,0.22)", border: "1px solid rgba(74,158,255,0.35)", borderRadius: "20px", padding: "2px 9px", letterSpacing: "0.04em" }}>
-          {letter.year}
-        </div>
-      </div>
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "16px 18px 18px", gap: "14px" }}>
-        <div>
-          <div style={{ fontSize: "14px", fontWeight: 700, color: "#0a1628", lineHeight: 1.35, marginBottom: "5px" }}>{letter.name}</div>
+     <div style={{ height: "290px", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+  {!imgError ? (
+    <img
+      src={letter.image ?? `/leaders/${letter.name.toLowerCase().replace(/[\s.]+/g, "-").replace(/[^a-z0-9-]/g, "")}.jpg`}
+       alt={letter.name}
+  onError={() => setImgError(true)}
+  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
+/>
+  ) : (
+    <div style={{ width: "100%", height: "100%", background: "#f0f4f9", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <span style={{ fontSize: "36px", fontWeight: 800, color: "#1a3a6b", opacity: 0.6 }}>{letter.name.charAt(0)}</span>
+    </div>
+  )}
+  <div style={{ position: "absolute", top: "12px", right: "12px", fontSize: "10px", fontWeight: 700, color: "#1a3a6b", background: "rgba(255,255,255,0.85)", border: "1px solid rgba(74,158,255,0.35)", borderRadius: "20px", padding: "2px 9px", letterSpacing: "0.04em" }}>
+    {letter.year}
+  </div>
+</div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "14px 16px 16px", gap: "12px", minHeight: 0 }}>
+        <div style={{ flex: 1, overflow: "hidden", display: "flex", flexDirection: "column", minHeight: 0 }}>
+          <div style={{ fontSize: "14px", fontWeight: 700, color: "#0a1628", lineHeight: 1.35, marginBottom: "4px" }}>{letter.name}</div>
           <div style={{ fontSize: "12px", color: "#4a9eff", fontWeight: 600, lineHeight: 1.4, marginBottom: "6px" }}>{letter.role}</div>
-          <div style={{ fontSize: "12px", color: "#8a9ab5", lineHeight: 1.65, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{letter.summary}</div>
+          <div style={{ fontSize: "12px", color: "#8a9ab5", lineHeight: 1.65, flex: 1, overflowY: "auto", paddingRight: "4px", scrollbarWidth: "thin", scrollbarColor: "rgba(26,58,107,0.2) transparent" }}>
+            {letter.summary}
+          </div>
         </div>
         {clickable ? (
-          <button onClick={(e) => { e.stopPropagation(); onOpen(letter); }} style={{ width: "100%", padding: "10px 0", borderRadius: "8px", border: "none", background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)", color: "#fff", fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", cursor: "pointer", transition: "opacity 0.15s ease" }} onMouseEnter={(e) => e.currentTarget.style.opacity = "0.88"} onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>View Letter</button>
+          <button style={{ width: "100%", padding: "12px 0", borderRadius: "8px", background: "linear-gradient(135deg, #0a1628 0%, #1a3a6b 100%)", border: "none", color: "#fff", fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", cursor: "pointer", boxShadow: "0 4px 12px rgba(10,22,40,0.25)", transition: "all 0.2s ease", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", flexShrink: 0 }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 6px 16px rgba(10,22,40,0.35)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 12px rgba(10,22,40,0.25)"; }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h56A8,8,0,0,1,192,128Zm-40,24a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h24A8,8,0,0,1,152,152Z"/></svg>
+            View Details
+          </button>
         ) : (
-          <div style={{ width: "100%", padding: "10px 0", borderRadius: "8px", background: "rgba(26,58,107,0.07)", color: "#b0bcc8", fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textAlign: "center" }}>Not Available</div>
+          <div style={{ width: "100%", padding: "12px 0", borderRadius: "8px", background: "rgba(26,58,107,0.07)", border: "1px dashed rgba(26,58,107,0.2)", color: "#b0bcc8", fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", flexShrink: 0 }}>Not Available</div>
         )}
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
@@ -363,27 +162,62 @@ function LetterCard({ letter, onOpen }) {
 function LeaderCard({ person }) {
   const [imgError, setImgError] = useState(false);
   const imageSrc = person.image || (person.name ? `/leaders/${person.name.toLowerCase().replace(/[\s.]+/g, "-").replace(/[^a-z0-9-]/g, "")}.jpg` : null);
+  const showImage = !!imageSrc && !imgError;
 
   return (
-    <div style={{ background: "#fff", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 20px rgba(26,58,107,0.10)", display: "flex", flexDirection: "column", minHeight: "320px", transition: "transform 0.18s ease, box-shadow 0.18s ease" }}
+    <div style={{ background: "#fff", borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 20px rgba(26,58,107,0.10)", display: "flex", flexDirection: "column", transition: "transform 0.18s ease, box-shadow 0.18s ease" }}
       onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 14px 32px rgba(26,58,107,0.16)"; }}
       onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(26,58,107,0.10)"; }}>
-      <div style={{ background: "linear-gradient(160deg, #cce8ff 0%, #ddf0ff 100%)", flex: "0 0 52%", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", width: "130px", height: "130px", borderRadius: "50%", background: "rgba(74,158,255,0.15)" }} />
-        {!imgError && imageSrc ? (
-          <img src={imageSrc} alt={person.name} onError={() => setImgError(true)} style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", border: "3px solid rgba(74,158,255,0.45)", position: "relative", zIndex: 1, boxShadow: "0 4px 16px rgba(26,58,107,0.18)" }} />
-        ) : (
-          <div style={{ width: "100px", height: "100px", borderRadius: "50%", background: "linear-gradient(135deg, #4a9eff33 0%, #1a3a6b22 100%)", border: "3px solid rgba(74,158,255,0.45)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", zIndex: 1 }}>
-            <span style={{ fontSize: "36px", fontWeight: 800, color: "#1a3a6b", opacity: 0.6 }}>{person.name ? person.name.charAt(0) : "?"}</span>
-          </div>
-        )}
-        {person.year && <div style={{ position: "absolute", top: "12px", right: "12px", fontSize: "10px", fontWeight: 700, color: "#1a3a6b", background: "rgba(74,158,255,0.22)", border: "1px solid rgba(74,158,255,0.35)", borderRadius: "20px", padding: "2px 9px", letterSpacing: "0.04em" }}>{person.year}</div>}
-      </div>
+      {showImage && (
+        <div style={{ height: "200px", position: "relative", overflow: "hidden", flexShrink: 0 }}>
+          <img
+            src={imageSrc}
+            alt={person.name}
+            onError={() => setImgError(true)}
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
+          />
+          {person.year && (
+            <div style={{ position: "absolute", top: "12px", right: "12px", fontSize: "10px", fontWeight: 700, color: "#1a3a6b", background: "rgba(255,255,255,0.85)", border: "1px solid rgba(74,158,255,0.35)", borderRadius: "20px", padding: "2px 9px", letterSpacing: "0.04em" }}>
+              {person.year}
+            </div>
+          )}
+        </div>
+      )}
       <div style={{ flex: 1, padding: "16px 18px 20px", display: "flex", flexDirection: "column", gap: "6px" }}>
-        <div style={{ fontSize: "14px", fontWeight: 700, color: "#0a1628", lineHeight: 1.35 }}>{person.name}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {!showImage && (
+            <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#eef3fa", border: "1px solid rgba(26,58,107,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <span style={{ fontSize: "13px", fontWeight: 800, color: "#1a3a6b" }}>{person.name ? person.name.charAt(0) : "?"}</span>
+            </div>
+          )}
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontSize: "14px", fontWeight: 700, color: "#0a1628", lineHeight: 1.35 }}>{person.name}</div>
+            {!showImage && person.year && (
+              <div style={{ fontSize: "10px", fontWeight: 600, color: "#7a8fa6" }}>{person.year}</div>
+            )}
+          </div>
+        </div>
         <div style={{ fontSize: "12px", color: "#4a9eff", fontWeight: 600, lineHeight: 1.4 }}>{person.role}</div>
-        <p style={{ fontSize: "12px", color: "#8a9ab5", lineHeight: 1.7, margin: "4px 0 0", display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{person.description}</p>
+        <p style={{ fontSize: "12px", color: "#8a9ab5", lineHeight: 1.7, margin: "4px 0 0", maxHeight: "82px", overflowY: "auto", paddingRight: "4px" }}>{person.description}</p>
       </div>
+    </div>
+  );
+}
+
+// ── Sub-component: CategoryGroup ─────────────────────────────────────────────
+// Renders a category sub-heading (e.g. "Prime Ministers") followed by a grid
+// of cards. `renderCard` decides how each item in the group is rendered so
+// this can be reused for both letter cards and leader cards.
+
+function CategoryGroup({ category, items, gridClassName, renderCard }) {
+  return (
+    <div style={{ marginBottom: "32px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+        <div style={{ fontSize: "13px", fontWeight: 700, color: "#1a3a6b", textTransform: "uppercase", letterSpacing: "0.06em" }}>{category}</div>
+        <div style={{ flex: 1, height: "1px", background: "rgba(26,58,107,0.12)" }} />
+        <div style={{ fontSize: "11px", fontWeight: 600, color: "#7a8fa6", background: "rgba(26,58,107,0.06)", borderRadius: "20px", padding: "2px 10px" }}>{items.length}</div>
+      </div>
+      <div className={gridClassName}>{items.map(renderCard)}</div>
     </div>
   );
 }
@@ -391,7 +225,7 @@ function LeaderCard({ person }) {
 // ── Sub-component: ProfileSection ────────────────────────────────────────────
 
 function ProfileSection({ section, isLast }) {
-  const IconComponent = section.icon;
+  const IconComponent = ICONS[section.icon];
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
@@ -429,7 +263,6 @@ function ProfileSection({ section, isLast }) {
 export default function Founder() {
   const [searchParams] = useSearchParams();
   const tab = searchParams.get("tab") ?? "profile";
-  const [activeLetter, setActiveLetter] = useState(null);
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [tab]);
 
@@ -531,11 +364,16 @@ export default function Founder() {
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 {audioSpeeches.map((speech) => (
                   <div key={speech.id} style={{ background: "#fff", border: "1px solid rgba(26,58,107,0.1)", borderRadius: "14px", overflow: "hidden", boxShadow: "0 4px 16px rgba(26,58,107,0.07)" }}>
-                    <div style={{ background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div><div style={{ fontSize: "14px", fontWeight: 700, color: "#fff" }}>{speech.title}</div><div style={{ fontSize: "11px", color: "#4a9eff", marginTop: "3px" }}>{speech.date}</div></div>
-                      <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "rgba(74,158,255,0.18)", border: "1px solid rgba(74,158,255,0.35)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#4a9eff" viewBox="0 0 256 256"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z" /></svg>
+                    <div style={{ background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: "14px", fontWeight: 700, color: "#fff" }}>{speech.title}</div>
+                        <div style={{ fontSize: "11px", color: "#4a9eff", marginTop: "3px" }}>{speech.date}</div>
                       </div>
+                      <DownloadButton
+                        href={speech.audioSrc}
+                        label="Download"
+                        filename={`${speech.title}.mp3`}
+                      />
                     </div>
                     <div style={{ padding: "16px 20px 14px" }}>
                       <p style={{ fontSize: "14px", lineHeight: 1.75, color: "#4a5568", margin: "0 0 14px" }}>{speech.description}</p>
@@ -564,7 +402,12 @@ export default function Founder() {
                         <div style={{ fontSize: "15px", fontWeight: 700, color: "#0a1628" }}>{speech.title}</div>
                         <div style={{ fontSize: "11px", fontWeight: 600, color: "#4a9eff", background: "rgba(74,158,255,0.1)", borderRadius: "20px", padding: "3px 12px" }}>{speech.date}</div>
                       </div>
-                      <p style={{ fontSize: "14px", lineHeight: 1.8, color: "#4a5568", margin: 0 }}>{speech.description}</p>
+                      <p style={{ fontSize: "14px", lineHeight: 1.8, color: "#4a5568", margin: "0 0 14px" }}>{speech.description}</p>
+                      <DownloadButton
+                        href={speech.docSrc}
+                        label="Download Transcript"
+                        filename={`${speech.title}.pdf`}
+                      />
                     </div>
                   </div>
                 ))}
@@ -576,47 +419,50 @@ export default function Founder() {
 
       {/* CORRESPONDENCE */}
       {tab === "correspondence" && (
-        <>
-          {activeLetter && (
-            <div onClick={() => setActiveLetter(null)} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(10,22,40,0.72)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-              <div onClick={(e) => e.stopPropagation()} style={{ background: "#fff", borderRadius: "16px", overflow: "hidden", width: "100%", maxWidth: "820px", maxHeight: "90vh", display: "flex", flexDirection: "column", boxShadow: "0 24px 64px rgba(10,22,40,0.35)" }}>
-                <div style={{ background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)", padding: "16px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div><div style={{ fontSize: "15px", fontWeight: 700, color: "#fff" }}>{activeLetter.name}</div><div style={{ fontSize: "12px", color: "#4a9eff" }}>{activeLetter.role} • {activeLetter.year}</div></div>
-                  <button onClick={() => setActiveLetter(null)} style={{ width: "34px", height: "34px", borderRadius: "50%", border: "1px solid rgba(74,158,255,0.35)", background: "rgba(74,158,255,0.12)", color: "#4a9eff", fontSize: "18px", cursor: "pointer" }}>×</button>
+        <section className="py-16 lg:py-20">
+          <div className="container px-4" style={{ maxWidth: "980px", margin: "0 auto" }}>
+            <div style={{ marginBottom: "52px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "8px" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a9eff" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-8,16L128,129.64,40,64ZM216,192H40V82.77l82.79,75.17a8,8,0,0,0,10.42,0L216,82.77V192Z" /></svg>
                 </div>
-                <iframe src={activeLetter.letterSrc} title={`Letter — ${activeLetter.name}`} style={{ flex: 1, border: "none", minHeight: "520px", background: "#fafafa" }} />
+                <div><h2 style={{ fontSize: "20px", fontWeight: 800, color: "#0a1628", margin: 0 }}>Letters by Dr. Alagappa Chettiar</h2><p style={{ fontSize: "13px", color: "#7a8fa6", margin: "3px 0 0" }}>Letters written to prominent figures in Indian history.</p></div>
               </div>
+              <div style={{ width: "100%", height: "1px", background: "rgba(26,58,107,0.1)", margin: "20px 0 24px" }} />
+              {groupByCategory(lettersBy).map((group) => (
+                <CategoryGroup
+                  key={group.category}
+                  category={group.category}
+                  items={group.items}
+                  gridClassName="correspondence-grid"
+                  renderCard={(letter) => <LetterCard key={letter.id} letter={letter} />}
+                />
+              ))}
             </div>
-          )}
-          <section className="py-16 lg:py-20">
-            <div className="container px-4" style={{ maxWidth: "980px", margin: "0 auto" }}>
-              <div style={{ marginBottom: "52px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "8px" }}>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a9eff" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-8,16L128,129.64,40,64ZM216,192H40V82.77l82.79,75.17a8,8,0,0,0,10.42,0L216,82.77V192Z" /></svg>
-                  </div>
-                  <div><h2 style={{ fontSize: "20px", fontWeight: 800, color: "#0a1628", margin: 0 }}>Letters by Dr. Alagappa Chettiar</h2><p style={{ fontSize: "13px", color: "#7a8fa6", margin: "3px 0 0" }}>Letters written to prominent figures in Indian history.</p></div>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "8px" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a9eff" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,96.36L46.37,64H209.63ZM98.32,128,40,181.05V74.9Zm11.87,10.79,13.17,11.95a8,8,0,0,0,10.68,0l13.17-11.95L209,192H47ZM157.68,128,216,74.9v106.15Z" /></svg>
                 </div>
-                <div style={{ width: "100%", height: "1px", background: "rgba(26,58,107,0.1)", margin: "20px 0 24px" }} />
-                <div className="correspondence-grid">{lettersBy.map((letter) => <LetterCard key={letter.id} letter={letter} onOpen={setActiveLetter} />)}</div>
+                <div><h2 style={{ fontSize: "20px", fontWeight: 800, color: "#0a1628", margin: 0 }}>Letters to Dr. Alagappa Chettiar</h2><p style={{ fontSize: "13px", color: "#7a8fa6", margin: "3px 0 0" }}>Letters received from national leaders.</p></div>
               </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "8px" }}>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a9eff" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,96.36L46.37,64H209.63ZM98.32,128,40,181.05V74.9Zm11.87,10.79,13.17,11.95a8,8,0,0,0,10.68,0l13.17-11.95L209,192H47ZM157.68,128,216,74.9v106.15Z" /></svg>
-                  </div>
-                  <div><h2 style={{ fontSize: "20px", fontWeight: 800, color: "#0a1628", margin: 0 }}>Letters to Dr. Alagappa Chettiar</h2><p style={{ fontSize: "13px", color: "#7a8fa6", margin: "3px 0 0" }}>Letters received from national leaders.</p></div>
-                </div>
-                <div style={{ width: "100%", height: "1px", background: "rgba(26,58,107,0.1)", margin: "20px 0 24px" }} />
-                <div className="correspondence-grid">{lettersTo.map((letter) => <LetterCard key={letter.id} letter={letter} onOpen={setActiveLetter} />)}</div>
-              </div>
+              <div style={{ width: "100%", height: "1px", background: "rgba(26,58,107,0.1)", margin: "20px 0 24px" }} />
+              {groupByCategory(lettersTo).map((group) => (
+                <CategoryGroup
+                  key={group.category}
+                  category={group.category}
+                  items={group.items}
+                  gridClassName="correspondence-grid"
+                  renderCard={(letter) => <LetterCard key={letter.id} letter={letter} />}
+                />
+              ))}
             </div>
-            <style>{`
-              .correspondence-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-              @media (max-width: 560px) { .correspondence-grid { grid-template-columns: 1fr; } }
-            `}</style>
-          </section>
-        </>
+          </div>
+          <style>{`
+            .correspondence-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+            @media (max-width: 560px) { .correspondence-grid { grid-template-columns: 1fr; } }
+          `}</style>
+        </section>
       )}
 
       {/* LEADERS & DIGNITARIES */}

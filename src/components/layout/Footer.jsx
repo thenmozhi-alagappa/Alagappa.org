@@ -54,41 +54,62 @@ export default function Footer() {
               {schoolData.description ?? "Empowering generations through excellence in education, innovation, and character building across Chennai & Karaikudi."}
             </p>
 
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-              {[
-                { Icon: FacebookLogo,  href: schoolData.socialMedia?.facebook  ?? "#" },
-                { Icon: TwitterLogo,   href: schoolData.socialMedia?.twitter   ?? "#" },
-                { Icon: InstagramLogo, href: schoolData.socialMedia?.instagram ?? "#" },
-                { Icon: YoutubeLogo,   href: schoolData.socialMedia?.youtube   ?? "#" },
-                { Icon: LinkedinLogo,  href: schoolData.socialMedia?.linkedin  ?? "#" },
-              ].map(({ Icon, href }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    width: "34px", height: "34px", borderRadius: "50%",
-                    background: "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#fff", textDecoration: "none", transition: "all 0.2s",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.background = "#004B8E";
-                    e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.borderColor = "#004B8E";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.07)";
-                    e.currentTarget.style.color = "#94a3b8";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-                  }}
-                >
-                  <Icon size={15} weight="bold" />
-                </a>
-              ))}
-            </div>
+<div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+  {[
+    {
+      Icon: FacebookLogo,
+      href: "https://www.facebook.com/profile.php?id=61578774906657",
+    },
+    {
+      Icon: TwitterLogo,
+      href: "https://x.com/Alagappagr14894",
+    },
+    {
+      Icon: InstagramLogo,
+      href: "https://www.instagram.com/alagappagroups?igsh=MXR0NGJjbmI0YWI5Zw==",
+    },
+    {
+      Icon: YoutubeLogo,
+      href: "https://www.youtube.com/@thealagappagroup1288",
+    },
+    {
+      Icon: LinkedinLogo,
+      href: "https://www.linkedin.com/in/alagappa-group-of-educational-institutions-a783573a5/",
+    },
+  ].map(({ Icon, href }, i) => (
+    <a
+      key={i}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        width: "34px",
+        height: "34px",
+        borderRadius: "50%",
+        background: "rgba(255,255,255,0.07)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#fff",
+        textDecoration: "none",
+        transition: "all 0.2s",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "#004B8E";
+        e.currentTarget.style.color = "#fff";
+        e.currentTarget.style.borderColor = "#004B8E";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(255,255,255,0.07)";
+        e.currentTarget.style.color = "#94a3b8";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+      }}
+    >
+      <Icon size={15} weight="bold" />
+    </a>
+  ))}
+</div>
           </div>
 
           {/* Quick Links */}
