@@ -24,7 +24,8 @@ import {
   TAB_META,
   subNavItems,
   groupByCategory,
-} from "../data/FounderData";
+} from "@/data/FounderData";
+
 
 // Maps the string icon keys stored in founderData.js to the actual
 // phosphor-react icon components used at render time.
