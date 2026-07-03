@@ -24,9 +24,9 @@ const academicHighAchievers = {
       name: "Alagappa Matriculation Higher Secondary School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Mohan Kumar", score: "598/600", percentage: "99.67%", stream: "Science - PCM", rank: "School Topper" },
-        { id: 2, name: "Lakshmi Priya", score: "595/600", percentage: "99.17%", stream: "Science - PCB", rank: "2nd" },
-        { id: 3, name: "Rajendran", score: "592/600", percentage: "98.67%", stream: "Commerce", rank: "3rd" },
+        { id: 1, name: "Mohan Kumar", score: "598/600", percentage: "99.67%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" },
+        { id: 2, name: "Lakshmi Priya", score: "595/600", percentage: "99.17%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" },
+        { id: 3, name: "Rajendran", score: "592/600", percentage: "98.67%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" },
       ]
     },
     {
@@ -34,9 +34,9 @@ const academicHighAchievers = {
       name: "Alagappa CBSE School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Karthik Raja", score: "596/600", percentage: "99.33%", stream: "Science - PCM", rank: "School Topper" },
-        { id: 2, name: "Divya Lakshmi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "2nd" },
-        { id: 3, name: "Arun Kumar", score: "590/600", percentage: "98.33%", stream: "Commerce", rank: "3rd" },
+        { id: 1, name: "Karthik Raja", score: "596/600", percentage: "99.33%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" },
+        { id: 2, name: "Divya Lakshmi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" },
+        { id: 3, name: "Arun Kumar", score: "590/600", percentage: "98.33%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" },
       ]
     },
     {
@@ -44,9 +44,9 @@ const academicHighAchievers = {
       name: "Alagappa Girls Higher Secondary School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Meena Devi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "School Topper" },
-        { id: 2, name: "Saranya Devi", score: "591/600", percentage: "98.50%", stream: "Science - PCM", rank: "2nd" },
-        { id: 3, name: "Nila Devi", score: "588/600", percentage: "98.00%", stream: "Commerce", rank: "3rd" },
+        { id: 1, name: "Meena Devi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "1st", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face" },
+        { id: 2, name: "Saranya Devi", score: "591/600", percentage: "98.50%", stream: "Science - PCM", rank: "2nd", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face" },
+        { id: 3, name: "Nila Devi", score: "588/600", percentage: "98.00%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200&h=200&fit=crop&crop=face" },
       ]
     },
     {
@@ -54,9 +54,9 @@ const academicHighAchievers = {
       name: "Alagappa Matriculation School",
       location: "Chennai, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Vijay Kumar", score: "597/600", percentage: "99.50%", stream: "Science - PCM", rank: "School Topper" },
-        { id: 2, name: "Anitha Devi", score: "593/600", percentage: "98.83%", stream: "Science - PCB", rank: "2nd" },
-        { id: 3, name: "Suresh Babu", score: "589/600", percentage: "98.17%", stream: "Commerce", rank: "3rd" },
+        { id: 1, name: "Vijay Kumar", score: "597/600", percentage: "99.50%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" },
+        { id: 2, name: "Anitha Devi", score: "593/600", percentage: "98.83%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face" },
+        { id: 3, name: "Suresh Babu", score: "589/600", percentage: "98.17%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face" },
       ]
     },
   ]
@@ -189,76 +189,40 @@ const sportsWinners = {
 const institutions = [
   {
     id: 1,
-    name: "Alagappa College of Technology",
-    location: "Chennai, Tamil Nadu",
-    type: "Engineering",
-    formUrl: "/forms/act-application-form.pdf",
-    eligibility: "10+2 with PCM",
-    seats: 300
+    name: "Alagappa Matriculation Higher Secondary School for LKG to X",
+    location: "Karaikudi, Tamil Nadu",
+    type: "Higher Secondary School",
+    formUrl: "/forms/AMHSS-LKG-to-X.pdf",
   },
   {
     id: 2,
-    name: "Alagappa Chettiar College of Engineering & Technology",
+    name: "Alagappa Matriculation Higher Secondary School for XI & XII ",
     location: "Karaikudi, Tamil Nadu",
-    type: "Engineering",
-    formUrl: "/forms/acce-application-form.pdf",
-    eligibility: "10+2 with PCM",
-    seats: 420
+    type: "Higher Secondary School",
+    formUrl: "/forms/AMHSS-XI-to-XII.pdf",
   },
   {
     id: 3,
-    name: "Alagappa College of Arts & Science",
+    name: "Alagappa Girls Matriculation Higher Secondary School",
     location: "Karaikudi, Tamil Nadu",
-    type: "Arts & Science",
-    formUrl: "/forms/acas-application-form.pdf",
-    eligibility: "10+2 in any stream",
-    seats: 500
+    type: "Higher Secondary School",
+    formUrl: "/forms/Girls-School.pdf",
   },
   {
     id: 4,
-    name: "Alagappa College of Polytechnic",
+    name: "Alagappa Montessori School, Karaikudi ",
     location: "Karaikudi, Tamil Nadu",
-    type: "Polytechnic",
-    formUrl: "/forms/poly-application-form.pdf",
-    eligibility: "10th Pass",
-    seats: 360
+    type: "Primary and Nursery Education",
+    formUrl: "/forms/Montessori.pdf",
   },
   {
     id: 5,
-    name: "Alagappa Physical Education College",
+    name: "Smart Start Playschool & Daycare center, Karaikudi",
     location: "Karaikudi, Tamil Nadu",
-    type: "Physical Education",
-    formUrl: "/forms/physical-ed-application.pdf",
-    eligibility: "10+2",
-    seats: 100
+    type: "Kindergarden & Daycare",
+    formUrl: "/forms/Smart-Start.pdf",
   },
-  {
-    id: 6,
-    name: "Alagappa Model Higher Secondary School",
-    location: "Karaikudi, Tamil Nadu",
-    type: "School",
-    formUrl: "/forms/model-hss-application.pdf",
-    eligibility: "For Classes 6-12",
-    seats: 2000
-  },
-  {
-    id: 7,
-    name: "Alagappa Matriculation School",
-    location: "Chennai, Tamil Nadu",
-    type: "School",
-    formUrl: "/forms/matric-school-application.pdf",
-    eligibility: "For Classes 1-12",
-    seats: 1500
-  },
-  {
-    id: 8,
-    name: "Alagappa Institute of Information Technology",
-    location: "Chennai, Tamil Nadu",
-    type: "IT Institute",
-    formUrl: "/forms/aiit-application-form.pdf",
-    eligibility: "10+2 with Mathematics",
-    seats: 180
-  }
+ 
 ];
 
 // Tab configuration
@@ -452,10 +416,7 @@ function InstitutionCard({ institution }) {
         </div>
       </div>
       <div style={{ fontSize: "12px", color: "#6b7a90", marginBottom: "8px" }}>📍 {institution.location}</div>
-      <div style={{ fontSize: "11px", color: "#6b7a90", marginBottom: "12px" }}>
-        <span style={{ marginRight: "12px" }}>✓ {institution.eligibility}</span>
-        <span>🎯 {institution.seats} seats</span>
-      </div>
+     
       <a
         href={institution.formUrl}
         download
@@ -480,6 +441,65 @@ function InstitutionCard({ institution }) {
         <DownloadSimple size={16} />
         Download Form
       </a>
+    </div>
+  );
+}
+
+// Component for displaying institutions in Academics tab
+function InstitutionListItem({ institution }) {
+  return (
+    <div style={{
+      background: "#fff",
+      borderRadius: "12px",
+      padding: "16px 20px",
+      boxShadow: "0 2px 12px rgba(26,58,107,0.08)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      flexWrap: "wrap",
+      gap: "12px",
+      transition: "transform 0.2s ease, box-shadow 0.2s ease"
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(26,58,107,0.12)"; }}
+    onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(26,58,107,0.08)"; }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, minWidth: "200px" }}>
+        <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <GraduationCap size={18} color="#4a9eff" weight="duotone" />
+        </div>
+        <div>
+          <div style={{ fontSize: "14px", fontWeight: 700, color: "#0a1628" }}>{institution.name}</div>
+          <div style={{ fontSize: "11px", color: "#6b7a90" }}>{institution.location} • {institution.type}</div>
+        </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+        <div style={{ fontSize: "11px", color: "#6b7a90", marginRight: "8px" }}>
+          <span style={{ marginRight: "10px" }}>✓ {institution.eligibility}</span>
+          <span>🎯 {institution.seats} seats</span>
+        </div>
+        <a
+          href={institution.formUrl}
+          download
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "6px",
+            background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)",
+            color: "#fff",
+            padding: "8px 14px",
+            borderRadius: "6px",
+            fontSize: "11px",
+            fontWeight: 600,
+            textDecoration: "none",
+            transition: "opacity 0.15s ease"
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
+        >
+          <DownloadSimple size={14} />
+          Download
+        </a>
+      </div>
     </div>
   );
 }
@@ -554,32 +574,59 @@ export default function Accomplishments() {
                   {school.name}
                 </h3>
                 <p style={{ fontSize: "12px", color: "#7a8fa6", marginBottom: "20px" }}>📍 {school.location}</p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
-                  {school.toppers.map((student, index) => (
-                    <div key={student.id} style={{ background: "#fff", borderRadius: "16px", padding: "20px", boxShadow: "0 4px 20px rgba(26,58,107,0.10)", display: "flex", alignItems: "center", gap: "16px", transition: "transform 0.2s ease", }}
-                      onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
-                      onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}>
-                      <div style={{ position: "relative", flexShrink: 0 }}>
-                        <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ fontSize: "22px", fontWeight: 800, color: "#fff" }}>{index + 1}</span>
-                        </div>
-                        {index === 0 && <div style={{ position: "absolute", bottom: "-4px", left: "50%", transform: "translateX(-50%)", fontSize: "20px" }}>🥇</div>}
-                        {index === 1 && <div style={{ position: "absolute", bottom: "-4px", left: "50%", transform: "translateX(-50%)", fontSize: "20px" }}>🥈</div>}
-                        {index === 2 && <div style={{ position: "absolute", bottom: "-4px", left: "50%", transform: "translateX(-50%)", fontSize: "20px" }}>🥉</div>}
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: "15px", fontWeight: 700, color: "#0a1628", marginBottom: "4px" }}>{student.name}</div>
-                        <div style={{ fontSize: "12px", color: "#4a9eff", fontWeight: 600, marginBottom: "4px" }}>{student.stream}</div>
-                        <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                          <div style={{ fontSize: "16px", fontWeight: 800, color: "#1a3a6b" }}>{student.percentage}</div>
-                          <div style={{ fontSize: "11px", color: "#7a8fa6" }}>{student.score}</div>
-                        </div>
-                      </div>
-                      <div style={{ background: index === 0 ? "rgba(251,191,36,0.15)" : "rgba(26,58,107,0.08)", padding: "6px 12px", borderRadius: "20px", fontSize: "11px", fontWeight: 700, color: index === 0 ? "#92400e" : "#6b7a90" }}>
-                        {student.rank}
-                      </div>
-                    </div>
-                  ))}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+               {school.toppers.map((student, index) => (
+  <div key={student.id} style={{ background: "#fff", borderRadius: "20px", overflow: "hidden", boxShadow: "0 4px 20px rgba(26,58,107,0.10)", textAlign: "center", position: "relative", transition: "transform 0.2s ease, box-shadow 0.2s ease", }}
+    onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 14px 32px rgba(26,58,107,0.16)"; }}
+    onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(26,58,107,0.10)"; }}>
+
+    {/* Rank Tag - top right corner, floats over the photo */}
+    <div style={{
+      position: "absolute",
+      top: "16px",
+      right: "16px",
+      background: student.rank === "1st" ? "linear-gradient(135deg, #fbbf24, #f59e0b)" : student.rank === "2nd" ? "linear-gradient(135deg, #9ca3af, #6b7280)" : "linear-gradient(135deg, #d97706, #b45309)",
+      color: "#fff",
+      padding: "5px 14px",
+      borderRadius: "20px",
+      fontSize: "12px",
+      fontWeight: 800,
+      boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+      border: "2px solid #fff",
+      zIndex: 2
+    }}>
+      {student.rank === "1st" && "🥇 1st"}
+      {student.rank === "2nd" && "🥈 2nd"}
+      {student.rank === "3rd" && "🥉 3rd"}
+    </div>
+
+    {/* Full Student Photo - no crop, no circle */}
+    <div style={{ width: "100%", height: "260px", overflow: "hidden" }}>
+      <img
+        src={student.image}
+        alt={student.name}
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+      />
+    </div>
+
+    {/* Student Details */}
+    <div style={{ padding: "20px" }}>
+      <div style={{ fontSize: "16px", fontWeight: 700, color: "#0a1628", marginBottom: "4px" }}>{student.name}</div>
+      <div style={{ fontSize: "12px", color: "#4a9eff", fontWeight: 600, marginBottom: "8px" }}>{student.stream}</div>
+      <div style={{ display: "flex", justifyContent: "center", gap: "16px", paddingTop: "12px", borderTop: "1px solid rgba(26,58,107,0.08)" }}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "18px", fontWeight: 800, color: "#1a3a6b" }}>{student.percentage}</div>
+          <div style={{ fontSize: "10px", color: "#7a8fa6", textTransform: "uppercase", letterSpacing: "0.05em" }}>Percentage</div>
+        </div>
+        <div style={{ width: "1px", background: "rgba(26,58,107,0.1)" }} />
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "18px", fontWeight: 800, color: "#1a3a6b" }}>{student.score}</div>
+          <div style={{ fontSize: "10px", color: "#7a8fa6", textTransform: "uppercase", letterSpacing: "0.05em" }}>Score</div>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
                 </div>
               </div>
             ))}
@@ -650,10 +697,58 @@ export default function Accomplishments() {
               <p style={{ fontSize: "15px", color: "#6b7a90", maxWidth: "640px", margin: "0 auto", lineHeight: 1.7 }}>Download application forms for any of our institutions. Fill out the form and submit it at the respective institution's office.</p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "16px" }}>
-              {institutions.map((institution) => (
-                <InstitutionCard key={institution.id} institution={institution} />
-              ))}
+            {/* Table Format */}
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", background: "#fff", borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 20px rgba(26,58,107,0.10)" }}>
+                <thead>
+                  <tr style={{ background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)" }}>
+                    <th style={{ padding: "16px", textAlign: "left", color: "#fff", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Institution</th>
+                    <th style={{ padding: "16px", textAlign: "left", color: "#fff", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Location</th>
+                    <th style={{ padding: "16px", textAlign: "left", color: "#fff", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Type</th>
+                    <th style={{ padding: "16px", textAlign: "center", color: "#fff", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {institutions.map((institution, index) => (
+                    <tr key={institution.id} style={{ background: index % 2 === 0 ? "#fff" : "#f8fafc", transition: "background 0.2s ease" }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = "#f1f5f9"}
+                      onMouseLeave={(e) => e.currentTarget.style.background = index % 2 === 0 ? "#fff" : "#f8fafc"}>
+                      <td style={{ padding: "16px", fontSize: "14px", fontWeight: 600, color: "#0a1628" }}>{institution.name}</td>
+                      <td style={{ padding: "16px", fontSize: "13px", color: "#6b7a90" }}>{institution.location}</td>
+                      <td style={{ padding: "16px" }}>
+                        <span style={{ display: "inline-block", padding: "4px 10px", background: "rgba(74,158,255,0.1)", color: "#4a9eff", fontSize: "11px", fontWeight: 600, borderRadius: "20px" }}>
+                          {institution.type}
+                        </span>
+                      </td>
+                      <td style={{ padding: "16px", textAlign: "center" }}>
+                        <a
+                          href={institution.formUrl}
+                          download
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "6px",
+                            background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)",
+                            color: "#fff",
+                            padding: "8px 16px",
+                            borderRadius: "6px",
+                            fontSize: "12px",
+                            fontWeight: 600,
+                            textDecoration: "none",
+                            transition: "opacity 0.15s ease"
+                          }}
+                          onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
+                          onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
+                        >
+                          <DownloadSimple size={14} />
+                          Download
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>

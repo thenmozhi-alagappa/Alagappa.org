@@ -58,7 +58,7 @@ const institutionCategories = [
         initials: "AB",
         name: "Alagappa Basic School",
         city: "Karaikudi",
-        logo: "/logos/montessori.png",
+        logo: "/logos/basicschl.png",
       },
       {
         initials: "AB",

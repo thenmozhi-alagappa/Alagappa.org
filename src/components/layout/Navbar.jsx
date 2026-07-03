@@ -46,7 +46,7 @@ const navigationItems = [
       { title: "Primary", href: "/institutions?tab=primary" },
       { title: "Secondary", href: "/institutions?tab=secondary" },
       { title: "Professional & Vocational", href: "/institutions?tab=professional" },
-      { title: "Affiliated Institutions", href: "/institutions?tab=affiliated" },
+      { title: "Vocational Institutions", href: "/institutions?tab=vocational" },
     ],
   },
   {
@@ -56,12 +56,12 @@ const navigationItems = [
       { title: "Academics", href: "/accomplishments?tab=academics" },
       { title: "Extracurricular", href: "/accomplishments?tab=extracurricular" },
       { title: "Sports", href: "/accomplishments?tab=sports" },
-      { title: "Admissions", href: "https://forms.gle/4Z4bK4FT3ZrpjYux6", external: true },
+      { title: "Admissions", href: "/accomplishments?tab=admissions" },
     ],
   },
   { title: "Gallery", href: "/gallery" },
   { title: "Contact", href: "/contact" },
-  { title: "Admissions", href: "https://forms.gle/4Z4bK4FT3ZrpjYux6", button: true, external: true },
+  { title: "Admissions", href: "/accomplishments?tab=admissions", button: true },
   { title: "Donate", href: "/donate", button: true },
 ];
 
