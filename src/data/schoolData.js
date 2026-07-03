@@ -257,18 +257,18 @@ export const schoolData = {
   ],
 
   gallery: [
-    { id: 1, category: "Campus", src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop", alt: "School Campus" },
-    { id: 2, category: "Classroom", src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop", alt: "Modern Classroom" },
-    { id: 3, category: "Sports", src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=600&fit=crop", alt: "Sports Activities" },
-    { id: 4, category: "Arts", src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=600&fit=crop", alt: "Art Exhibition" },
-    { id: 5, category: "Science", src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop", alt: "Science Lab" },
-    { id: 6, category: "Events", src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop", alt: "School Event" },
-    { id: 7, category: "Music", src: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&h=600&fit=crop", alt: "Music Performance" },
-    { id: 8, category: "Campus", src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop", alt: "School Building" },
-    { id: 9, category: "Sports", src: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?w=800&h=600&fit=crop", alt: "Basketball Game" },
-    { id: 10, category: "Classroom", src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop", alt: "Library" },
-    { id: 11, category: "Events", src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop", alt: "Graduation" },
-    { id: 12, category: "Arts", src: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=600&fit=crop", alt: "Drama Club" }
+    { id: 1, category: "Campus", institution: "Alagappa Basic School", src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop", alt: "School Campus" },
+    { id: 2, category: "Classroom", institution: "Alagappa Basic School", src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop", alt: "Modern Classroom" },
+    { id: 3, category: "Sports", institution: "Alagappa Matric Hr. Sec School", src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=600&fit=crop", alt: "Sports Activities" },
+    { id: 4, category: "Arts", institution: "Alagappa Girls Higher Secondary School", src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=600&fit=crop", alt: "Art Exhibition" },
+    { id: 5, category: "Science", institution: "Alagappa College of Technology", src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop", alt: "Science Lab" },
+    { id: 6, category: "Events", institution: "Alagappa Basic School", src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop", alt: "School Event" },
+    { id: 7, category: "Music", institution: "Alagappa Performing Arts Academy", src: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&h=600&fit=crop", alt: "Music Performance" },
+    { id: 8, category: "Campus", institution: "Alagappa University", src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop", alt: "School Building" },
+    { id: 9, category: "Sports", institution: "Alagappa Matric Hr. Sec School", src: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?w=800&h=600&fit=crop", alt: "Basketball Game" },
+    { id: 10, category: "Classroom", institution: "Alagappa Smart Start Play School", src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop", alt: "Library" },
+    { id: 11, category: "Events", institution: "Alagappa University", src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop", alt: "Graduation" },
+    { id: 12, category: "Arts", institution: "Dr. Umayal Ramanathan College for Women", src: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=600&fit=crop", alt: "Drama Club" }
   ],
 
   members: {

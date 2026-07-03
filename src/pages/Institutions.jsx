@@ -39,10 +39,10 @@ const primaryInstitutions = [
     name: "Alagappa Basic School",
     location: "Karaikudi, Tamil Nadu",
     affiliation: "Tamil Nadu Matriculation Board",
-    logo: "/logos/montessori.png",
-    tag: "Matriculation",
+    logo: "/logos/basicschl.png",
+    tag: "Basic School",
     description:
-      "One of the flagship institutions of the Alagappa Group, this school has shaped generations of learners in Karaikudi. With a sprawling campus, well-equipped laboratories, and a tradition of academic excellence, it prepares students from primary level through higher secondary with a strong emphasis on both curricular and co-curricular achievements.",
+      "Alagappa Preparatory School was founded by Dr. Alagappa Chettiar in 1955. The school offers from Standard 1 to 5. With qualified faculty, students are taught interpersonal skillsets and provided standardized education.",
     highlights: ["Science & Maths excellence", "Fully equipped labs", "Sports & cultural programs", "Smart classrooms"],
   },
   {
@@ -64,7 +64,7 @@ const primaryInstitutions = [
     logo: "/logos/montessori.png",
     tag: "Model School",
     description:
-      "Established to serve as an exemplar of the Group's educational philosophy, this school integrates modern pedagogy with time-tested values. It offers classes from primary through higher secondary and is particularly noted for its science stream results and a competitive environment that consistently sends students to top engineering and medical colleges.",
+      "Alagappa Montessori School was founded in 1953 by Dr. Alagappa Chettiar. Being among the first Montessori Schools in the region, education is imparted to children in the Play Way method paving way for a child to learn. The Montessori education method calls for free activity within a 'prepared environment', meaning an educational environment tailored to meet basic human characteristics, to the specific characteristics of children at different ages, and to the individual personalities of each child. This allows the child to develop independence in all areas according to his or her inner psychological directives. The school has a vast area for playing. There are six classrooms with sufficient ventilation and adequate furniture. The classes function from Lower Kindergarten to II Standard. A large number of play things are provided to educate and entertain the kids. Transport facility is available to the children.",
     highlights: ["STEM focus", "Outstanding board results", "Merit scholarship program", "Digital library"],
   },
   {
@@ -75,7 +75,7 @@ const primaryInstitutions = [
     logo: "/logos/umayalPlayschl.png",
     tag: "Model School",
     description:
-      "Established to serve as an exemplar of the Group's educational philosophy, this school integrates modern pedagogy with time-tested values. It offers classes from primary through higher secondary and is particularly noted for its science stream results and a competitive environment that consistently sends students to top engineering and medical colleges.",
+      "Founded by Dr. Umayal Ramanathan in 2002 the school provides a caring environment for toddlers, as a home away from home.The goal is to nurture good habits and develop skill sets through play techniques. By imparting skill sets through interactive learning, students are encouraged to form good healthy habits and develop social skills. Spacious ventilated rooms are provided with a caring ambience to welcome toddlers in a hygienic environment. The faculty consists of specially qualified trained staff well–versed in play techniques to handle toddlers with utmost care and dedication.",
     highlights: ["STEM focus", "Outstanding board results", "Merit scholarship program", "Digital library"],
   },
 ];
@@ -89,7 +89,7 @@ const secondaryInstitutions = [
     logo: "/logos/cbsechn.png",
     tag: "Higher Secondary",
     description:
-      "A cornerstone of secondary education in the Chettinad region, Alagappa Higher Secondary School offers an expansive range of academic streams including Science, Commerce, and Arts. The school's alumni network spans government, academia, and industry, a living testament to the quality of its foundational education over more than seven decades.",
+      "The Alagappa Matriculation and Higher Secondary Wings were founded by Dr. Umayal Ramanathan in 1982 & 1989 respectively. School strength exceeds 1000 students with a team of highly qualified and efficient teaching staff. The school is recognized by the Ministry of Education, Government of Tamil Nadu and offers courses as per their curriculum. Set in the midst of a sprawling campus, the school is an oasis of serenity located in the heart of the city in Puraswalkam. In order to make learning interesting and interactive, knowledge is disseminated by bringing in a transformation in teaching methodologies, namely Educomp, the Smart class program and the digital boards have been installed to encourage students' participation and enhance learning trends.",
     highlights: ["Three academic streams", "100% board pass rate", "NCC & NSS units", "Alumni mentorship"],
   },
   {
@@ -112,7 +112,7 @@ const secondaryInstitutions = [
     logo: "/logos/cbse.png",
     tag: "CBSE School",
     description:
-      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+      "The Alagappa Academy was founded by Dr. R. Vairavan in 2014 to establish a CBSE based academic program from LKG to 6th Standard in the Alagappa group of institutions and expand the student offerings to a multi-model schooling system. With engaging extra-curricular activities and a dedicated faculty each student is considered uniquely nurtured with individual attention to help channelize energies and bring out their best. Housed in a serene environment, qualified teaching and non-teaching staff cater to the needs of every child. Our standardized CBSE based curriculum focuses on skills like critical thinking and problem solving through interactive events, activities and role playing games in the classrooms. Robotics has now been added to the curriculum.",
     highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
   {
@@ -123,7 +123,7 @@ const secondaryInstitutions = [
     logo: "/logos/cbsechn.png",
     tag: "CBSE School",
     description:
-      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+      "The Alagappa Matriculation and Higher Secondary Wings were founded by Dr. Umayal Ramanathan in 1982 & 1989 respectively. School strength exceeds 1000 students with a team of highly qualified and efficient teaching staff. The school is recognized by the Ministry of Education, Government of Tamil Nadu and offers courses as per their curriculum. Set in the midst of a sprawling campus, the school is an oasis of serenity located in the heart of the city in Puraswalkam. In order to make learning interesting and interactive, knowledge is disseminated by bringing in a transformation in teaching methodologies, namely Educomp, the Smart class program and the digital boards have been installed to encourage students' participation and enhance learning trends.",
     highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
   {
@@ -134,7 +134,7 @@ const secondaryInstitutions = [
     logo: "/logos/matric.png",
     tag: "Matriculation School",
     description:
-      "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
+      "To meet the needs of the emerging society, where education needs to be focused on girls, to surface their skill sets and get empowered, the Alagappa Girls Hr.Sec School was founded in 2014 by Dr. R. Vairavan. The school is focused to cultivate leadership skills in every young woman and promote the importance of service to others, both within and beyond the community. Beyond the classroom, girls learn that they can become athletes, journalists, computer technicians, musicians, debaters, activists, community service leaders, and artistes. Research confirms that graduates of girls' schools develop life-long friends and achieve greater success both in the Academics and professional worlds. Through a planned curriculum the girls are taught to be problem-solvers, learn to manage their time, and learn to speak up about issues of concern, locally and globally. They participate fully in a diverse and cohesive community. The girls come to discover their passions and their strengths. They come to know themselves the best preparation possible for the lives they will lead in the years ahead. Robotics is also added to the curriculum.",
     highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
 ];

@@ -43,11 +43,13 @@ const ICONS = {
 
 // ── Sub-component: DownloadButton ────────────────────────────────────────────
 
-function DownloadButton({ href, label = "Download", filename }) {
+function DownloadButton({ href, label = "Download", filename, newTab = false, showIcon = true }) {
   return (
     <a
       href={href}
-      download={filename ?? true}
+      target={newTab ? "_blank" : undefined}
+      rel={newTab ? "noopener noreferrer" : undefined}
+      download={newTab ? undefined : (filename ?? true)}
       style={{
         display: "inline-flex",
         alignItems: "center",
@@ -70,7 +72,7 @@ function DownloadButton({ href, label = "Download", filename }) {
       onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(74,158,255,0.14)"; }}
       onClick={(e) => e.stopPropagation()}
     >
-      <DownloadSimple size={14} weight="bold" />
+      {showIcon && <DownloadSimple size={14} weight="bold" />}
       {label}
     </a>
   );
@@ -406,8 +408,9 @@ export default function Founder() {
                       <p style={{ fontSize: "14px", lineHeight: 1.8, color: "#4a5568", margin: "0 0 14px" }}>{speech.description}</p>
                       <DownloadButton
                         href={speech.docSrc}
-                        label="Download Transcript"
-                        filename={`${speech.title}.pdf`}
+                        label="View Transcript"
+                        newTab={true}
+                        showIcon={false}
                       />
                     </div>
                   </div>

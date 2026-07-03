@@ -75,19 +75,77 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-muted/30">
-        <div className="container px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-4">Contact Us</Badge>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Get in Touch
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              We welcome your questions, comments, and interest in our school.
-              Reach out to us through any of the channels below.
-            </p>
+      {/* ── Hero Section ── */}
+      <section
+        style={{
+          background: "linear-gradient(160deg, #0a1628 0%, #0d2444 45%, #1a3a6b 100%)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Subtle radial glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-60px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "700px",
+            height: "300px",
+            background: "radial-gradient(ellipse, rgba(74,158,255,0.12) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "52px 24px 36px",
+            textAlign: "center",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              fontSize: "11px",
+              fontWeight: 700,
+              color: "#4a9eff",
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              marginBottom: "12px",
+              background: "rgba(74,158,255,0.12)",
+              padding: "4px 14px",
+              borderRadius: "20px",
+              border: "1px solid rgba(74,158,255,0.25)",
+            }}
+          >
+            Contact Us
           </div>
+          <h1
+            style={{
+              fontSize: "clamp(28px, 5vw, 48px)",
+              fontWeight: 800,
+              color: "#ffffff",
+              marginBottom: "12px",
+              lineHeight: 1.15,
+            }}
+          >
+            Get in Touch
+          </h1>
+          <p
+            style={{
+              fontSize: "15px",
+              color: "rgba(200,216,240,0.75)",
+              maxWidth: "560px",
+              margin: "0 auto",
+              lineHeight: 1.7,
+            }}
+          >
+            We welcome your questions, comments, and interest in our school. Reach out to us through any of the channels below.
+          </p>
         </div>
       </section>
 
