@@ -13,7 +13,7 @@ export const founderMeta = {
   image: "/Management/AlagappaChettiarSketch.png",
   // image: "/Management/AlagappaChettiar.jpeg",
   highlights: [
-    { label: "Institutions Founded", value: "20+" },
+    { label: "Institutions Founded", value: "18+" },
     { label: "Alumni Produced", value: "30L+" },
     { label: "Acres Donated", value: "1,000+" },
     { label: "Years of Legacy", value: "75+" },

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import {
   GraduationCap,
@@ -8,7 +8,9 @@ import {
   DownloadSimple,
   Star,
   Medal,
-  Crown
+  Crown,
+  Calendar,
+  CaretDown
 } from "phosphor-react";
 import { schoolData } from "@/data/schoolData";
 
@@ -24,19 +26,59 @@ const academicHighAchievers = {
       name: "Alagappa Matriculation Higher Secondary School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Mohan Kumar", score: "598/600", percentage: "99.67%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" },
-        { id: 2, name: "Lakshmi Priya", score: "595/600", percentage: "99.17%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face" },
-        { id: 3, name: "Rajendran", score: "592/600", percentage: "98.67%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face" },
+        { id: 1, name: "AL. Meiyammai", score: "593/600", rank: "1st", image: "/Toppers/MatricKKd/12th/ALMeiyammai.png" },
+        { id: 2, name: "C. Sathyapriya", score: "573/600",  rank: "2nd", image: "/Toppers/MatricKKd/12th/sathyapriya.png" },
+        { id: 3, name: "E. Jessica", score: "566/600",  rank: "3rd", image: "/Toppers/MatricKKd/12th/jessica.png" },
       ]
     },
+    // {
+    //   id: 2,
+    //   name: "Alagappa CBSE School",
+    //   location: "Karaikudi, Tamil Nadu",
+    //   toppers: [
+    //     { id: 1, name: "Karthik Raja", score: "596/600", percentage: "99.33%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" },
+    //     { id: 2, name: "Divya Lakshmi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" },
+    //     { id: 3, name: "Arun Kumar", score: "590/600", percentage: "98.33%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" },
+    //   ]
+    // },
     {
-      id: 2,
-      name: "Alagappa CBSE School",
+      id: 3,
+      name: "Alagappa Girls Higher Secondary School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Karthik Raja", score: "596/600", percentage: "99.33%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" },
-        { id: 2, name: "Divya Lakshmi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" },
-        { id: 3, name: "Arun Kumar", score: "590/600", percentage: "98.33%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" },
+        { id: 1, name: "N. Vadivu", score: "568/600", rank: "1st", image: "/Toppers/GirlsKKd/12th/vadivu.jpeg" },
+        { id: 2, name: "SI. Kaarunyaa", score: "555/600", rank: "2nd", image: "/Toppers/GirlsKKd/12th/karunya.jpeg" },
+        { id: 3, name: "S. Amudhini", score: "550/600", rank: "3rd", image: "/Toppers/GirlsKKd/12th/amudhini.jpeg" },
+      ]
+    },
+    // {
+    //   id: 4,
+    //   name: "Alagappa Matriculation School",
+    //   location: "Chennai, Tamil Nadu",
+    //   toppers: [
+    //     { id: 1, name: "Vijay Kumar", score: "597/600", percentage: "99.50%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" },
+    //     { id: 2, name: "Anitha Devi", score: "593/600", percentage: "98.83%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face" },
+    //     { id: 3, name: "Suresh Babu", score: "589/600", percentage: "98.17%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face" },
+    //   ]
+    // },
+  ]
+};
+
+
+
+// Academics - 10th Grade toppers data
+const academic10thToppers = {
+  year: "2025-2026",
+  description: "Celebrating our outstanding students who have excelled in their Secondary School Certificate (Class 10) examinations across all our institutions.",
+  schools: [
+    {
+      id: 1,
+      name: "Alagappa Matriculation Higher Secondary School",
+      location: "Karaikudi, Tamil Nadu",
+      toppers: [
+        { id: 1, name: "S.S. Nandakishore", score: "487/500", rank: "1st", image: "/Toppers/MatricKKd/10th/nandakishore.jpg" },
+        { id: 2, name: "L. John Sebastin Paul", score: "479/500", rank: "2nd", image: "/Toppers/MatricKKd/10th/johnSebastinPaul.jpg" },
+        { id: 3, name: "S. Abhishek", score: "478/500", rank: "3rd", image: "/Toppers/MatricKKd/10th/abishek.jpg" },
       ]
     },
     {
@@ -44,21 +86,11 @@ const academicHighAchievers = {
       name: "Alagappa Girls Higher Secondary School",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
-        { id: 1, name: "Meena Devi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "1st", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face" },
-        { id: 2, name: "Saranya Devi", score: "591/600", percentage: "98.50%", stream: "Science - PCM", rank: "2nd", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face" },
-        { id: 3, name: "Nila Devi", score: "588/600", percentage: "98.00%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=200&h=200&fit=crop&crop=face" },
+        { id: 1, name: "R. Harini Shri", score: "486/500",  rank: "1st", image: "/Toppers/GirlsKKd/10th/harinisri.jpeg" },
+        { id: 2, name: "K. Nithya Sri", score: "480/500", rank: "2nd", image: "/Toppers/GirlsKKd/10th/nithyasree.jpeg" },
+        { id: 3, name: "S. Surjetha", score: "468/500", rank: "3rd", image: "/Toppers/GirlsKKd/10th/surjeetha.jpeg" },
       ]
-    },
-    {
-      id: 4,
-      name: "Alagappa Matriculation School",
-      location: "Chennai, Tamil Nadu",
-      toppers: [
-        { id: 1, name: "Vijay Kumar", score: "597/600", percentage: "99.50%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" },
-        { id: 2, name: "Anitha Devi", score: "593/600", percentage: "98.83%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face" },
-        { id: 3, name: "Suresh Babu", score: "589/600", percentage: "98.17%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face" },
-      ]
-    },
+    }
   ]
 };
 
@@ -241,6 +273,90 @@ const subNavItems = [
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────
+
+// Custom dropdown — replaces native <select> so the selected value is always
+// rendered with our own styling (native selects were showing up blank/white).
+function CustomDropdown({ value, options, onChange, minWidth = "110px" }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const selected = options.find((o) => o.value === value);
+
+  return (
+    <div ref={ref} style={{ position: "relative", minWidth }}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "8px",
+          padding: "7px 10px",
+          fontSize: "12px",
+          fontWeight: 600,
+          border: "none",
+          borderRadius: "8px",
+          cursor: "pointer",
+          background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)",
+          color: "#fff"
+        }}
+      >
+        {selected?.label}
+        <CaretDown size={12} weight="bold" style={{ flexShrink: 0 }} />
+      </button>
+
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            left: 0,
+            right: 0,
+            background: "#0a1628",
+            borderRadius: "8px",
+            overflow: "hidden",
+            boxShadow: "0 8px 24px rgba(10,22,40,0.35)",
+            zIndex: 20
+          }}
+        >
+          {options.map((opt) => (
+            <div
+              key={opt.value}
+              onClick={() => {
+                onChange(opt.value);
+                setOpen(false);
+              }}
+              style={{
+                padding: "8px 10px",
+                fontSize: "12px",
+                fontWeight: opt.value === value ? 700 : 500,
+                color: "#fff",
+                cursor: "pointer",
+                background: opt.value === value ? "rgba(74,158,255,0.25)" : "transparent"
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(74,158,255,0.18)")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = opt.value === value ? "rgba(74,158,255,0.25)" : "transparent")
+              }
+            >
+              {opt.label}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function StudentCard({ student }) {
   const [imgError, setImgError] = useState(false);
@@ -509,12 +625,31 @@ function InstitutionListItem({ institution }) {
 export default function Accomplishments() {
   const [searchParams] = useSearchParams();
   const tab = searchParams.get("tab") ?? "academics";
+  const [academicClass, setAcademicClass] = useState("12th");
+  const [academicYear, setAcademicYear] = useState("2025-2026");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [tab]);
 
   const meta = TAB_META[tab] ?? TAB_META.academics;
+
+  // Get available years for the selected class
+  const availableYears = academicClass === "12th"
+    ? ["2025-2026"]
+    : ["2025-2026"];
+
+  // Get academic data based on class and year
+  const getAcademicData = () => {
+    if (academicClass === "12th") {
+      if (academicYear === "2025-2026") return academicHighAchievers;
+      return academicHighAchievers;
+    } else {
+      return academic10thToppers;
+    }
+  };
+
+  const academicData = getAcademicData();
 
   return (
     <div className="flex flex-col">
@@ -554,79 +689,142 @@ export default function Accomplishments() {
       {tab === "academics" && (
         <section className="py-16 lg:py-20">
           <div className="container px-4" style={{ maxWidth: "1280px", margin: "0 auto" }}>
+            {/* Filters Row - Custom Dropdowns */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "12px", marginBottom: "32px", flexWrap: "wrap" }}>
+              {/* Class Dropdown */}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <span style={{ fontSize: "12px", color: "#6b7a90", fontWeight: 500 }}>Class:</span>
+                <CustomDropdown
+                  value={academicClass}
+                  minWidth="120px"
+                  options={[
+                    { value: "12th", label: "12th Standard" },
+                    { value: "10th", label: "10th Standard" }
+                  ]}
+                  onChange={(val) => {
+                    setAcademicClass(val);
+                    if (val === "10th") setAcademicYear("2025-2026");
+                  }}
+                />
+              </div>
+
+              {/* Year Dropdown - Only show for 12th class */}
+              {academicClass === "12th" && (
+                <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <span style={{ fontSize: "12px", color: "#6b7a90", fontWeight: 500 }}>Year:</span>
+                  <CustomDropdown
+                    value={academicYear}
+                    minWidth="105px"
+                    options={[
+                      { value: "2025-2026", label: "2025-2026" },
+                    ]}
+                    onChange={setAcademicYear}
+                  />
+                </div>
+              )}
+            </div>
+
             {/* Section Header */}
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
                 <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "linear-gradient(135deg, #0a1628, #1a3a6b)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <GraduationCap size={20} color="#4a9eff" weight="duotone" />
                 </div>
-                <div style={{ fontSize: "11px", fontWeight: 700, color: "#4a9eff", textTransform: "uppercase", letterSpacing: "0.08em" }}>Higher Secondary</div>
+                <div style={{ fontSize: "11px", fontWeight: 700, color: "#4a9eff", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                  {academicClass === "12th" ? "Higher Secondary" : "Secondary"}
+                </div>
               </div>
-              <h2 style={{ fontSize: "clamp(22px, 2.5vw, 32px)", fontWeight: 800, color: "#0a1628", marginBottom: "12px" }}>School Wise Toppers {academicHighAchievers.year}</h2>
-              <p style={{ fontSize: "15px", color: "#6b7a90", maxWidth: "640px", margin: "0 auto", lineHeight: 1.7 }}>{academicHighAchievers.description}</p>
+              <h2 style={{ fontSize: "clamp(22px, 2.5vw, 32px)", fontWeight: 800, color: "#0a1628", marginBottom: "12px" }}>School Wise Toppers {academicData.year}</h2>
+              <p style={{ fontSize: "15px", color: "#6b7a90", maxWidth: "640px", margin: "0 auto", lineHeight: 1.7 }}>{academicData.description}</p>
             </div>
 
             {/* School-wise Toppers */}
-            {academicHighAchievers.schools.map((school) => (
-              <div key={school.id} style={{ marginBottom: "48px" }}>
-                <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1a3a6b", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: "10px" }}>
+            {academicData.schools.map((school) => (
+              <div key={school.id} style={{ marginBottom: "56px", textAlign: "center" }}>
+                <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#1a3a6b", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
                   <Trophy size={20} color="#fbbf24" weight="fill" />
                   {school.name}
                 </h3>
-                <p style={{ fontSize: "12px", color: "#7a8fa6", marginBottom: "20px" }}>📍 {school.location}</p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-               {school.toppers.map((student, index) => (
-  <div key={student.id} style={{ background: "#fff", borderRadius: "20px", overflow: "hidden", boxShadow: "0 4px 20px rgba(26,58,107,0.10)", textAlign: "center", position: "relative", transition: "transform 0.2s ease, box-shadow 0.2s ease", }}
-    onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 14px 32px rgba(26,58,107,0.16)"; }}
-    onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(26,58,107,0.10)"; }}>
+                <p style={{ fontSize: "12px", color: "#7a8fa6", marginBottom: "28px" }}>📍 {school.location}</p>
+                <div style={{ display: "flex", justifyContent: "center", gap: "32px", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
+                  {school.toppers.map((student) => {
+                    const rankStyles = {
+                      "1st": { ribbon: "linear-gradient(90deg, #4a9eff, #1a3a6b)", ribbonText: "#fff", label: "School First" },
+                      "2nd": { ribbon: "linear-gradient(90deg, #85b7eb, #378add)", ribbonText: "#042c53", label: "School Second" },
+                      "3rd": { ribbon: "linear-gradient(90deg, #185fa5, #042c53)", ribbonText: "#fff", label: "School Third" }
+                    };
+                    const rs = rankStyles[student.rank] || rankStyles["1st"];
+                    const [scoreNum, scoreDen] = student.score.split("/");
 
-    {/* Rank Tag - top right corner, floats over the photo */}
-    <div style={{
-      position: "absolute",
-      top: "16px",
-      right: "16px",
-      background: student.rank === "1st" ? "linear-gradient(135deg, #fbbf24, #f59e0b)" : student.rank === "2nd" ? "linear-gradient(135deg, #9ca3af, #6b7280)" : "linear-gradient(135deg, #d97706, #b45309)",
-      color: "#fff",
-      padding: "5px 14px",
-      borderRadius: "20px",
-      fontSize: "12px",
-      fontWeight: 800,
-      boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-      border: "2px solid #fff",
-      zIndex: 2
-    }}>
-      {student.rank === "1st" && "🥇 1st"}
-      {student.rank === "2nd" && "🥈 2nd"}
-      {student.rank === "3rd" && "🥉 3rd"}
-    </div>
+                    return (
+                      <div
+                        key={student.id}
+                        style={{
+                          background: "#fff",
+                          borderRadius: "16px",
+                          overflow: "hidden",
+                          boxShadow: "0 4px 20px rgba(26,58,107,0.12)",
+                          border: "1px solid rgba(26,58,107,0.1)",
+                          textAlign: "center",
+                          position: "relative",
+                          width: "240px",
+                          transition: "transform 0.2s ease, box-shadow 0.2s ease"
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(26,58,107,0.18)"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(26,58,107,0.12)"; }}
+                      >
+                        {/* Diagonal rank ribbon - top right corner, blue gradient */}
+                        <div style={{
+                          position: "absolute",
+                          top: "14px",
+                          right: "-38px",
+                          width: "150px",
+                          transform: "rotate(45deg)",
+                          background: rs.ribbon,
+                          color: rs.ribbonText,
+                          fontSize: "12px",
+                          fontWeight: 700,
+                          textAlign: "center",
+                          padding: "5px 0",
+                          zIndex: 3,
+                          boxShadow: "0 2px 6px rgba(0,0,0,0.15)"
+                        }}>
+                          {student.rank}
+                        </div>
 
-    {/* Full Student Photo - no crop, no circle */}
-    <div style={{ width: "100%", height: "260px", overflow: "hidden" }}>
-      <img
-        src={student.image}
-        alt={student.name}
-        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-      />
-    </div>
+                        {/* Student photo */}
+                        <div style={{ width: "100%", height: "200px", overflow: "hidden" }}>
+                          <img
+                            src={student.image}
+                            alt={student.name}
+                            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                          />
+                        </div>
 
-    {/* Student Details */}
-    <div style={{ padding: "20px" }}>
-      <div style={{ fontSize: "16px", fontWeight: 700, color: "#0a1628", marginBottom: "4px" }}>{student.name}</div>
-      <div style={{ fontSize: "12px", color: "#4a9eff", fontWeight: 600, marginBottom: "8px" }}>{student.stream}</div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "16px", paddingTop: "12px", borderTop: "1px solid rgba(26,58,107,0.08)" }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "18px", fontWeight: 800, color: "#1a3a6b" }}>{student.percentage}</div>
-          <div style={{ fontSize: "10px", color: "#7a8fa6", textTransform: "uppercase", letterSpacing: "0.05em" }}>Percentage</div>
-        </div>
-        <div style={{ width: "1px", background: "rgba(26,58,107,0.1)" }} />
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "18px", fontWeight: 800, color: "#1a3a6b" }}>{student.score}</div>
-          <div style={{ fontSize: "10px", color: "#7a8fa6", textTransform: "uppercase", letterSpacing: "0.05em" }}>Score</div>
-        </div>
-      </div>
-    </div>
-  </div>
-))}
+                        {/* Name banner overlaid at the bottom edge of the photo */}
+                        <div style={{
+                          background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)",
+                          color: "#fff",
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          padding: "10px 8px",
+                          letterSpacing: "0.01em",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis"
+                        }}>
+                          {student.name}
+                        </div>
+
+                        {/* Score and school position */}
+                        <div style={{ padding: "14px 12px 18px", background: "linear-gradient(180deg, #f8fbff 0%, #fff 60%)" }}>
+                          <div style={{ fontSize: "28px", fontWeight: 800, color: "#1a3a6b", lineHeight: 1.1 }}>{scoreNum}</div>
+                          <div style={{ fontSize: "13px", color: "#94a3b8", fontWeight: 600, borderBottom: "1px solid rgba(26,58,107,0.08)", paddingBottom: "8px", marginBottom: "8px" }}>{scoreDen}</div>
+                          <div style={{ fontSize: "12px", fontWeight: 800, color: "#1a3a6b", textTransform: "uppercase", letterSpacing: "0.03em" }}>{rs.label}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ))}

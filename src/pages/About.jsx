@@ -38,6 +38,10 @@ const TAB_META = {
     heading: "Management",
     sub: "Leadership guiding the Alagappa Group of Educational Institutions",
   },
+  trustees: {
+    heading: "Trustees",
+    sub: "Trusted guardians of the Alagappa Educational Legacy",
+  },
   letter: {
     heading: "Letter from Management",
     sub: "A message from Dr. Umayal Ramanathan",
@@ -54,6 +58,7 @@ const TAB_META = {
 
 const subNavItems = [
   { label: "Management", tab: "management" },
+  { label: "Trustees", tab: "trustees" },
   { label: "Letter from Management", tab: "letter" },
   { label: "Vision & Mission", tab: "mission" },
   { label: "Press Releases", tab: "press" },
@@ -444,6 +449,170 @@ export default function About() {
         }
         .management-list {
           gap: 40px;
+        }
+      }
+    `}</style>
+  </section>
+)}
+
+      {/* ── TRUSTEES — alternating layout (first: right, second: left, etc.) ── */}
+     {tab === "trustees" && (
+  <section className="py-16 lg:py-20">
+    <div className="container px-4">
+      <div style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+        {schoolData.trustees.map((trustee, index) => {
+          const isEven = index % 2 === 0;
+          return (
+          <div
+            key={trustee.id}
+            style={{
+              display: "flex",
+              flexDirection: isEven ? "row-reverse" : "row",
+              alignItems: "flex-start",
+              gap: "40px",
+              width: "100%",
+            }}
+          >
+            {/* Image Side */}
+            <div style={{ flex: "0 0 260px", width: "260px", position: "relative" }}>
+              <div
+                style={{
+                  position: "absolute",
+                  inset: "-10px",
+                  background: isEven
+                    ? "linear-gradient(225deg, rgba(26,58,107,0.08) 0%, rgba(74,158,255,0.05) 100%)"
+                    : "linear-gradient(135deg, rgba(26,58,107,0.08) 0%, rgba(74,158,255,0.05) 100%)",
+                  borderRadius: "18px",
+                  zIndex: 0,
+                }}
+              />
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <img
+                  src={trustee.image}
+                  alt={trustee.name}
+                  style={{
+                    width: "100%",
+                    aspectRatio: "4 / 5",
+                    objectFit: "cover",
+                    borderRadius: "14px",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.12)",
+                    display: "block",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "14px",
+                    left: isEven ? "14px" : "auto",
+                    right: isEven ? "auto" : "14px",
+                    background: "linear-gradient(90deg, #0a1628 0%, #1a3a6b 100%)",
+                    color: "#fff",
+                    padding: "10px 14px",
+                    borderRadius: "8px",
+                    boxShadow: "0 6px 20px rgba(10,22,40,0.35)",
+                    maxWidth: "85%",
+                  }}
+                >
+                  <div style={{ fontSize: "13px", fontWeight: 700, lineHeight: 1.3 }}>
+                    {trustee.name}
+                  </div>
+                  <div style={{ fontSize: "11px", color: "#4a9eff", marginTop: "2px" }}>
+                    {trustee.role}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div style={{ flex: "1 1 0", minWidth: 0 }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
+                  <div
+                    style={{
+                      width: "32px",
+                      height: "3px",
+                      background: "linear-gradient(90deg, #1a3a6b 0%, #4a9eff 100%)",
+                      borderRadius: "2px",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      color: "#4a9eff",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    Trust
+                  </span>
+                </div>
+                <h2
+                  style={{
+                    fontSize: "clamp(24px, 2.5vw, 32px)",
+                    fontWeight: 800,
+                    color: "#0a1628",
+                    marginBottom: "6px",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {trustee.name}
+                </h2>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    color: "#1a3a6b",
+                    marginBottom: "16px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  {trustee.role}
+                </p>
+                <div
+                  style={{
+                    width: "50px",
+                    height: "3px",
+                    background: "linear-gradient(90deg, #1a3a6b 0%, #4a9eff 100%)",
+                    borderRadius: "2px",
+                    marginBottom: "18px",
+                  }}
+                />
+                <p
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: 1.9,
+                    color: "#4a5568",
+                    textAlign: "justify",
+                    margin: 0,
+                  }}
+                >
+                  {trustee.bio}
+                </p>
+              </div>
+          </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <style>{`
+      @media (max-width: 992px) {
+        .trustees-image-col {
+          flex: 0 0 200px !important;
+          width: 200px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .trustees-row {
+          flex-direction: column !important;
+        }
+        .trustees-image-col {
+          flex: none !important;
+          width: 100% !important;
+          max-width: 280px;
+          margin: 0 auto;
         }
       }
     `}</style>

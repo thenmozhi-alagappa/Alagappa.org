@@ -51,6 +51,7 @@ const bottomCards = [
     ),
     title: "Alagappa Buzz",
     link: "Read More",
+    href: "https://alagappaschoolchennai.com/Diginews", // <-- put your real link here
   },
   {
     icon: (
@@ -61,6 +62,7 @@ const bottomCards = [
     ),
     title: "The Inspire Zone - Alumni Newsletter",
     link: "Read More",
+    href: "https://alagappa.org/inspire-zone", // <-- put your real link here
   },
   {
     icon: (
@@ -71,6 +73,7 @@ const bottomCards = [
     ),
     title: "Alagappa Waves",
     link: "Read More",
+    href: "https://alagappaschoolkaraikudi.com/Alagappa-waves/", // <-- put your real link here
   },
 ];
 
@@ -197,86 +200,90 @@ export default function HeroSlider() {
                     
                   }}
                 >
-                  <div
+             <div
   style={{
     display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr",
-    gap: "20px !important", 
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: "20px",
   }}
 >
-                    {bottomCards.map((card, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "14px",
-                          padding: "18px 28px",
-                          borderRight:
-                            i < bottomCards.length - 1
-                              ? "1px solid rgba(255,255,255,0.1)"
-                              : "none",
-                          cursor: "pointer",
-                          transition: "background 0.2s",
-                        }}
-                        onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,75,142,0.35)")}
-                        onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-                      >
-                        {/* Icon box */}
-                        <div
-                          style={{
-                            background: "rgba(255,255,255,0.92)",
-                            borderRadius: "4px",
-                            padding: "8px",
-                            flexShrink: 0,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {card.icon}
-                        </div>
+  {bottomCards.map((card, i) => (
+    <a
+      key={i}
+      href={card.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "14px",
+        padding: "18px 28px",
+        borderRight:
+          i < bottomCards.length - 1
+            ? "1px solid rgba(255,255,255,0.1)"
+            : "none",
+        cursor: "pointer",
+        transition: "background 0.2s",
+        textDecoration: "none",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,75,142,0.35)")}
+      onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+    >
+      {/* Icon box */}
+      <div
+        style={{
+          background: "rgba(255,255,255,0.92)",
+          borderRadius: "4px",
+          padding: "8px",
+          flexShrink: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {card.icon}
+      </div>
 
-                        {/* Text */}
-                        <div>
-                          <p
-                            style={{
-                              color: "#ffffff",
-                              fontSize: "0.8rem",
-                              fontWeight: 800,
-                              letterSpacing: "0.1em",
-                              textTransform: "uppercase",
-                              margin: 0,
-                              marginBottom: "4px",
-                            }}
-                          >
-                            {card.title}
-                          </p>
-                          <span
-                            style={{
-                              color: "#f0a500",
-                              fontSize: "0.72rem",
-                              fontWeight: 600,
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "4px",
-                            }}
-                          >
-                            {card.link}
-                            <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
-                              <path
-                                d="M2 7h10M8 3l4 4-4 4"
-                                stroke="#f0a500"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+      {/* Text */}
+      <div>
+        <p
+          style={{
+            color: "#ffffff",
+            fontSize: "0.8rem",
+            fontWeight: 800,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            margin: 0,
+            marginBottom: "4px",
+          }}
+        >
+          {card.title}
+        </p>
+        <span
+          style={{
+            color: "#f0a500",
+            fontSize: "0.72rem",
+            fontWeight: 600,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "4px",
+          }}
+        >
+          {card.link}
+          <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7h10M8 3l4 4-4 4"
+              stroke="#f0a500"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
+    </a>
+  ))}
+</div>
                 </div>
 
               </div>

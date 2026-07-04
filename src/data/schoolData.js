@@ -7,7 +7,7 @@ export const schoolData = {
   statistics: {
     students: 3000000,
     events: 80,
-    volunteers: 20,
+    institutions: 18,
     clubs: 2,
   },
 
@@ -22,7 +22,7 @@ export const schoolData = {
     address: "Karaikudi, Tamil Nadu",
     phone: "04565-225524",
     email: "info@alagappa.org",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.985!3d40.748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzQ2LjEiTiA3M8KwNTknMDguNCJX!5e0!3m2!1sen!2sus!4v1234567890"
+    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15712.917968574926!2d78.790121!3d10.080273!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0067e86716b275%3A0xa534fd376fcc03fb!2sAlagappa%20Trust%20Office!5e0!3m2!1sen!2sin!4v1783145635445!5m2!1sen!2sin"
   },
 
   
@@ -50,6 +50,30 @@ export const schoolData = {
       bio: "Dr. Mrs. Umayal Ramanathan, the beloved daughter of the founder Dr. R.M. Alagappa Chettiar, served as Secretary of the Alagappa Educational Trust for decades, carrying forward her father's vision of educational excellence with unwavering dedication. She was instrumental in the founding of Alagappa University in 1985, a milestone that cemented the legacy of the Alagappa educational movement and elevated it to the level of a state university offering a wide range of academic programs. In recognition of her outstanding contributions to education and social welfare, Dr. Umayal Ramanathan was honoured with the prestigious Indira Gandhi Priyadarshini Award in 1994. She was also conferred the Doctor of Letters by Alagappa University in 1987 and by Madras University in 2007, reflecting the deep respect and admiration she commanded in academic circles."
     },
 
+  ],
+
+  trustees: [
+    {
+      id: 1,
+      name: "Dr. Ramanathan Vairavan",
+      role: "Chairman, Dr. Alagappa Chettiar Educational Trust",
+      image: "/Management/Chairman.png",
+      bio: "Dr. Ramanathan Vairavan serves as the Chairman of the Dr. Alagappa Chettiar Educational Trust, carrying forward the legacy of his grandfather, the legendary philanthropist Dr. RM. Alagappa Chettiar. With over four decades of experience in the healthcare and education sectors, Dr. Vairavan has established himself as a pioneering entrepreneur in biotechnology, having founded DiaCarta, a molecular diagnostics company revolutionizing precision diagnostics in cancer treatment. His commitment to education is evident in his oversight of institutions educating over 8,000 students, and his vision to establish a College of Medical Sciences including a College of Ayurvedic Medicine at Karaikudi. He holds an honorary doctorate from Alagappa University and is a Distinguished Alumni Awardee of AC Tech, Anna University."
+    },
+    {
+      id: 2,
+      name: "Mrs. S. Vairavan",
+      role: "Trustee, Asoka Charitable Trust",
+      image: "/Management/Chairman.png",
+      bio: "Mrs. S. Vairavan serves as a dedicated Trustee of the Asoka Charitable Trust, contributing significantly to the educational and social welfare initiatives of the Alagappa Group. Her unwavering commitment to philanthropy has helped expand access to quality education for thousands of students across various institutions. Through her guidance, the Trust has continued its mission of supporting underprivileged students and promoting educational excellence in rural Tamil Nadu."
+    },
+    {
+      id: 3,
+      name: "Mrs. Uma Ramanathan",
+      role: "Trustee, Dr. Alagappa Chettiar Educational Trust",
+      image: "/Management/Chairman.png",
+      bio: "Mrs. Uma Ramanathan serves as a Trustee of the Dr. Alagappa Chettiar Educational Trust, continuing the noble legacy of her family in advancing education and social welfare. Her strategic insights and dedicated service have been instrumental in maintaining the high standards of academic excellence across all Alagappa institutions. She plays a key role in shaping educational policies and ensuring the institutions remain true to the vision of their founder."
+    },
   ],
 
   events: [

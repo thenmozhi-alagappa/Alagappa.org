@@ -23,6 +23,7 @@ const navigationItems = [
     href: "/about",
     children: [
       { title: "Management", href: "/about?tab=management" },
+      { title: "Trustees", href: "/about?tab=trustees" },
       { title: "Letter from Management", href: "/about?tab=letter" },
       { title: "Vision & Mission", href: "/about?tab=mission" },
       { title: "Press Releases", href: "/about?tab=press" },
@@ -45,7 +46,7 @@ const navigationItems = [
     children: [
       { title: "Primary", href: "/institutions?tab=primary" },
       { title: "Secondary", href: "/institutions?tab=secondary" },
-      { title: "Professional & Vocational", href: "/institutions?tab=professional" },
+      { title: "Professional Institutions", href: "/institutions?tab=professional" },
       { title: "Vocational Institutions", href: "/institutions?tab=vocational" },
     ],
   },
@@ -61,7 +62,7 @@ const navigationItems = [
   },
   { title: "Gallery", href: "/gallery" },
   { title: "Contact", href: "/contact" },
-  { title: "Admissions", href: "/accomplishments?tab=admissions", button: true },
+  { title: "Admissions", href: "https://forms.gle/h9xPSTVEQcnBfvoa8", button: true, external: true },
   { title: "Donate", href: "/donate", button: true },
 ];
 
@@ -161,7 +162,7 @@ export default function Navbar() {
               <img
                 src="/logo.png"
                 alt="Alagappa Group logo"
-                style={{ height: "52px", width: "auto", objectFit: "contain", flexShrink: 0 }}
+                style={{ height: "97px", width: "auto", objectFit: "contain", flexShrink: 0, paddingBottom: "14px" }}
               />
               <div style={{ lineHeight: 1.3, minWidth: 0 }}>
                 <div style={{ fontSize: "15px", fontWeight: 800, color: "var(--navy)", letterSpacing: "-0.01em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
@@ -191,13 +192,19 @@ export default function Navbar() {
                 </div>
               </div>
               <div style={{ width: "1px", height: "40px", background: "#e0e8f0" }} />
-              <div className="contact-block">
+              <a
+                href="https://www.google.com/maps/search/Alagappa+Educational+Trust+Karaikudi/@10.080273,78.790121,15z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-block"
+                style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: "10px" }}
+              >
                 <div className="contact-icon-wrap"><MapPin size={18} weight="bold" /></div>
                 <div>
                   <div className="contact-label">Locate Us</div>
                   <div className="contact-value">{schoolData?.address ?? "Karaikudi, Tamil Nadu"}</div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* Mobile hamburger */}
@@ -223,7 +230,7 @@ export default function Navbar() {
             <span className="mobile-contact-text">{schoolData?.email ?? "info@alagappa.org"}</span>
           </a>
           <a
-            href={`https://maps.google.com/?q=${encodeURIComponent(schoolData?.address ?? "Karaikudi, Tamil Nadu")}`}
+            href="https://www.google.com/maps/search/Alagappa+Educational+Trust+Karaikudi/@10.080273,78.790121,15z"
             target="_blank"
             rel="noopener noreferrer"
             className="mobile-contact-item"
