@@ -6,6 +6,7 @@ import {
   Newspaper,
   GraduationCap,
   Buildings,
+  GlobeHemisphereEast,
   MapPin,
 } from "phosphor-react";
 import { Button } from "@/components/ui/button";
@@ -36,14 +37,14 @@ const stats = [
   },
   {
     label: "Institutions",
-    value: schoolData.statistics.volunteers,
+    value: schoolData.statistics.institutions,
     icon: Buildings,
     suffix: "+",
   },
   {
     label: "Cities — Chennai & Karaikudi",
     value: schoolData.statistics.clubs,
-    icon: MapPin,
+    icon: GlobeHemisphereEast,
     suffix: "",
   },
 ];
@@ -52,31 +53,33 @@ const institutionCategories = [
   {
     id: "primary",
     label: "Primary",
-    count: 3,
+    count: 4,
     items: [
-      {
-        initials: "AB",
-        name: "Alagappa Basic School",
-        city: "Karaikudi",
-        logo: "/logos/basicschl.png",
-      },
-      {
-        initials: "AB",
-        name: "Alagappa Smart Start Play School and Daycare Center",
-        city: "Karaikudi",
-        logo: "/logos/smartstart.png",
-      },
       {
         initials: "AM",
         name: "Alagappa Montessori",
         city: "Karaikudi",
         logo: "/logos/montessori.png",
       },
+    
+      {
+        initials: "AB",
+        name: "Alagappa Smart Start Play School and Daycare Center",
+        city: "Karaikudi",
+        logo: "/logos/smartstart.png",
+      },
+      
       {
         initials: "UP",
         name: "Umayal Play School",
         city: "Chennai",
         logo: "/logos/umayalPlayschl.png",
+      },
+        {
+        initials: "AB",
+        name: "Alagappa Basic School",
+        city: "Karaikudi",
+        logo: "/logos/basicschl.png",
       },
     ],
   },
@@ -230,6 +233,63 @@ function InstitutionLogo({ logo, initials, size = "lg" }) {
   );
 }
 
+// Row that keeps all items on a single line and centers them.
+// Falls back to horizontal scrolling on very narrow screens instead of wrapping.
+function InstitutionRow({ items }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "nowrap",
+        justifyContent: "center",
+        gap: "1.25rem",
+        overflowX: "auto",
+        paddingBottom: "4px",
+      }}
+    >
+      {items.map((inst, i) => (
+        <div
+          key={i}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            gap: "0.5rem",
+            flex: "0 0 auto",
+            width: "180px",
+            background: "#ffffff",
+            border: "1px solid rgba(0,75,142,0.15)",
+            borderRadius: "14px",
+            boxShadow: "0 4px 16px rgba(10,22,40,0.08)",
+            padding: "20px 14px",
+            boxSizing: "border-box",
+            transition: "transform 0.18s ease, box-shadow 0.18s ease",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-4px)";
+            e.currentTarget.style.boxShadow = "0 10px 26px rgba(10,22,40,0.14)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "0 4px 16px rgba(10,22,40,0.08)";
+          }}
+        >
+          <InstitutionLogo logo={inst.logo} initials={inst.initials} size="lg" />
+          <div>
+            <p className="text-base font-medium leading-snug">{inst.name}</p>
+            <p className="text-sm text-[#0066c2] mt-1 flex items-center justify-center gap-1">
+              <MapPin size={12} />
+              {inst.city}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function InstitutionsSection() {
   const [active, setActive] = useState("primary");
   const current = institutionCategories.find((c) => c.id === active);
@@ -280,61 +340,19 @@ function InstitutionsSection() {
           ))}
         </div>
 
-        {/* Institution Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {current.items.map((inst, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center gap-1"
-            >
-              <InstitutionLogo
-                logo={inst.logo}
-                initials={inst.initials}
-                size="lg"
-              />
-              <div>
-                <p className="text-base font-medium leading-snug">
-                  {inst.name}
-                </p>
-                <p className="text-sm text-[#0066c2] mt-1 flex items-center justify-center gap-1">
-                  <MapPin size={12} />
-                  {inst.city}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Institution Cards — single line, centered */}
+        <div className="mb-6">
+          <InstitutionRow items={current.items} />
         </div>
 
         {/* Government Institutions */}
         <div className="mt-6">
-            <p className="text-base font-medium text-[#004B8E] flex items-center gap-2 mb-6">
-              <Buildings size={18} />
-              Managed by the State Government of Tamil Nadu
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {govInstitutions.map((inst, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center text-center gap-1"
-                >
-                  <InstitutionLogo
-                    logo={inst.logo}
-                    initials={inst.initials}
-                    size="lg"
-                  />
-                  <div>
-                    <p className="text-sm font-medium leading-snug text-gray-800">
-                      {inst.name}
-                    </p>
-                    <p className="text-sm text-[#0066c2] mt-1 flex items-center justify-center gap-1">
-                      <MapPin size={12} />
-                      {inst.city}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="text-base font-medium text-[#004B8E] flex items-center justify-center gap-2 mb-6">
+            <Buildings size={18} />
+            Managed by the State Government of Tamil Nadu
+          </p>
+          <InstitutionRow items={govInstitutions} />
+        </div>
       </div>
     </section>
   );

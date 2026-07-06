@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { schoolData } from "@/data/schoolData";
+import { createPortal } from "react-dom";
 
 // Tab metadata
 const TAB_META = {
@@ -561,16 +562,20 @@ export default function Gallery() {
         </section>
       )}
 
-      {/* Lightbox */}
-      {selectedMedia && (
+      {/* Lightbox — rendered via portal directly into document.body,
+          with an inline zIndex as a hard override so it always sits
+          above the site header regardless of any header z-index/stacking. */}
+      {selectedMedia && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 flex items-center justify-center bg-black/95"
+          style={{ zIndex: 999999 }}
           onClick={closeLightbox}
         >
           <Button
             variant="ghost"
             size="icon"
             className="absolute top-4 right-4 text-white hover:bg-white/20"
+            style={{ zIndex: 1000000 }}
             onClick={closeLightbox}
           >
             <X size={24} />
@@ -580,6 +585,7 @@ export default function Gallery() {
             variant="ghost"
             size="icon"
             className="absolute left-4 text-white hover:bg-white/20"
+            style={{ zIndex: 1000000 }}
             onClick={(e) => {
               e.stopPropagation();
               navigateMedia("prev");
@@ -591,6 +597,7 @@ export default function Gallery() {
             variant="ghost"
             size="icon"
             className="absolute right-4 text-white hover:bg-white/20"
+            style={{ zIndex: 1000000 }}
             onClick={(e) => {
               e.stopPropagation();
               navigateMedia("next");
@@ -620,7 +627,8 @@ export default function Gallery() {
               <p className="text-white">{selectedMedia.alt}</p>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

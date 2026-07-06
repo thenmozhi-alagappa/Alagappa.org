@@ -16,7 +16,7 @@ const TAB_META = {
     sub: "Shaping confident, curious learners through rigorous secondary education.",
   },
   professional: {
-    heading: "Professional & Vocational",
+    heading: "Professional Institutions",
     sub: "Empowering students with career-ready skills and technical expertise.",
   },
   vocational: {
@@ -28,7 +28,7 @@ const TAB_META = {
 const subNavItems = [
   { label: "Primary", tab: "primary", icon: BookOpen },
   { label: "Secondary", tab: "secondary", icon: GraduationCap },
-  { label: "Professional & Vocational", tab: "professional", icon: Wrench },
+  { label: "Professional Institutions", tab: "professional", icon: Wrench },
   { label: "Vocational Institutions", tab: "vocational", icon: Buildings },
 ];
 
@@ -43,7 +43,6 @@ const primaryInstitutions = [
     tag: "Basic School",
     description:
       "Alagappa Preparatory School was founded by Dr. Alagappa Chettiar in 1955. The school offers from Standard 1 to 5. With qualified faculty, students are taught interpersonal skillsets and provided standardized education.",
-    highlights: ["Science & Maths excellence", "Fully equipped labs", "Sports & cultural programs", "Smart classrooms"],
   },
   {
     id: 2,
@@ -54,7 +53,6 @@ const primaryInstitutions = [
     tag: "State Board",
     description:
       "Founded as one of Dr. Alagappa Chettiar's earliest educational endeavours, Alagappa Vidhyalaya stands as a testament to his vision of accessible, quality primary education. The school follows the Tamil Nadu State Board curriculum and is renowned for its dedicated teaching faculty and nurturing environment that fosters curiosity and discipline in equal measure.",
-    highlights: ["Tamil Nadu State Board", "Mother-tongue instruction", "Value-based education", "Community outreach"],
   },
   {
     id: 3,
@@ -65,7 +63,6 @@ const primaryInstitutions = [
     tag: "Model School",
     description:
       "Alagappa Montessori School was founded in 1953 by Dr. Alagappa Chettiar. Being among the first Montessori Schools in the region, education is imparted to children in the Play Way method paving way for a child to learn. The Montessori education method calls for free activity within a 'prepared environment', meaning an educational environment tailored to meet basic human characteristics, to the specific characteristics of children at different ages, and to the individual personalities of each child. This allows the child to develop independence in all areas according to his or her inner psychological directives. The school has a vast area for playing. There are six classrooms with sufficient ventilation and adequate furniture. The classes function from Lower Kindergarten to II Standard. A large number of play things are provided to educate and entertain the kids. Transport facility is available to the children.",
-    highlights: ["STEM focus", "Outstanding board results", "Merit scholarship program", "Digital library"],
   },
   {
     id: 3,
@@ -76,7 +73,6 @@ const primaryInstitutions = [
     tag: "Model School",
     description:
       "Founded by Dr. Umayal Ramanathan in 2002 the school provides a caring environment for toddlers, as a home away from home.The goal is to nurture good habits and develop skill sets through play techniques. By imparting skill sets through interactive learning, students are encouraged to form good healthy habits and develop social skills. Spacious ventilated rooms are provided with a caring ambience to welcome toddlers in a hygienic environment. The faculty consists of specially qualified trained staff well–versed in play techniques to handle toddlers with utmost care and dedication.",
-    highlights: ["STEM focus", "Outstanding board results", "Merit scholarship program", "Digital library"],
   },
 ];
 
@@ -90,7 +86,6 @@ const secondaryInstitutions = [
     tag: "Higher Secondary",
     description:
       "The Alagappa Matriculation and Higher Secondary Wings were founded by Dr. Umayal Ramanathan in 1982 & 1989 respectively. School strength exceeds 1000 students with a team of highly qualified and efficient teaching staff. The school is recognized by the Ministry of Education, Government of Tamil Nadu and offers courses as per their curriculum. Set in the midst of a sprawling campus, the school is an oasis of serenity located in the heart of the city in Puraswalkam. In order to make learning interesting and interactive, knowledge is disseminated by bringing in a transformation in teaching methodologies, namely Educomp, the Smart class program and the digital boards have been installed to encourage students' participation and enhance learning trends.",
-    highlights: ["Three academic streams", "100% board pass rate", "NCC & NSS units", "Alumni mentorship"],
   },
   {
     id: 2,
@@ -102,7 +97,6 @@ const secondaryInstitutions = [
     tag: "Girls' School",
     description:
       "Founded with the express purpose of empowering young women through education, this all-girls institution has been a beacon of female empowerment in Chettinad for over sixty years. The school provides a safe, stimulating environment where girls are encouraged to aspire and achieve, with particular emphasis on leadership, self-confidence, and academic rigour.",
-    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
   {
     id: 2,
@@ -113,7 +107,6 @@ const secondaryInstitutions = [
     tag: "CBSE School",
     description:
       "The Alagappa Academy was founded by Dr. R. Vairavan in 2014 to establish a CBSE based academic program from LKG to 6th Standard in the Alagappa group of institutions and expand the student offerings to a multi-model schooling system. With engaging extra-curricular activities and a dedicated faculty each student is considered uniquely nurtured with individual attention to help channelize energies and bring out their best. Housed in a serene environment, qualified teaching and non-teaching staff cater to the needs of every child. Our standardized CBSE based curriculum focuses on skills like critical thinking and problem solving through interactive events, activities and role playing games in the classrooms. Robotics has now been added to the curriculum.",
-    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
   {
     id: 2,
@@ -124,7 +117,6 @@ const secondaryInstitutions = [
     tag: "CBSE School",
     description:
       "The Alagappa Matriculation and Higher Secondary Wings were founded by Dr. Umayal Ramanathan in 1982 & 1989 respectively. School strength exceeds 1000 students with a team of highly qualified and efficient teaching staff. The school is recognized by the Ministry of Education, Government of Tamil Nadu and offers courses as per their curriculum. Set in the midst of a sprawling campus, the school is an oasis of serenity located in the heart of the city in Puraswalkam. In order to make learning interesting and interactive, knowledge is disseminated by bringing in a transformation in teaching methodologies, namely Educomp, the Smart class program and the digital boards have been installed to encourage students' participation and enhance learning trends.",
-    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
   {
     id: 2,
@@ -135,7 +127,6 @@ const secondaryInstitutions = [
     tag: "Matriculation School",
     description:
       "To meet the needs of the emerging society, where education needs to be focused on girls, to surface their skill sets and get empowered, the Alagappa Girls Hr.Sec School was founded in 2014 by Dr. R. Vairavan. The school is focused to cultivate leadership skills in every young woman and promote the importance of service to others, both within and beyond the community. Beyond the classroom, girls learn that they can become athletes, journalists, computer technicians, musicians, debaters, activists, community service leaders, and artistes. Research confirms that graduates of girls' schools develop life-long friends and achieve greater success both in the Academics and professional worlds. Through a planned curriculum the girls are taught to be problem-solvers, learn to manage their time, and learn to speak up about issues of concern, locally and globally. They participate fully in a diverse and cohesive community. The girls come to discover their passions and their strengths. They come to know themselves the best preparation possible for the lives they will lead in the years ahead. Robotics is also added to the curriculum.",
-    highlights: ["Women's empowerment focus", "Leadership development", "Career counselling", "Cultural excellence"],
   },
 ];
 
@@ -149,7 +140,6 @@ const professionalInstitutions = [
     tag: "Arts & Science",
     description:
       "URCW is one of the oldest and most distinguished engineering colleges in Tamil Nadu, now an autonomous institution vocational to Anna University. Spanning 14 undergraduate and several postgraduate programs in engineering and technology, ACCET's graduates occupy leadership positions across global technology and manufacturing firms. Its NAAC-accredited campus features advanced research labs, industry-linked curricula, and a vibrant placement cell.",
-    highlights: ["NAAC Accredited", "14+ UG Programs", "Active industry tie-ups", "Robust placement record"],
   },
   {
     id: 2,
@@ -160,7 +150,6 @@ const professionalInstitutions = [
     tag: "Nursing",
     description:
       "The College of Nursing was established to meet the growing demand for skilled nursing professionals in the region. It offers undergraduate and postgraduate programs in nursing and is vocational to Alagappa University. The college is known for its comprehensive curriculum, modern infrastructure, and strong emphasis on clinical training.",
-    highlights: ["Vocational to Alagappa University", "Comprehensive nursing programs", "Modern infrastructure", "Strong clinical training"],
   },
   
 ];
@@ -175,19 +164,8 @@ const vocationalInstitutions = [
     tag: "Performing Arts",
     description:
       "ACAS is one of the premier arts and science colleges in the Chettinad belt, offering undergraduate and postgraduate programs across Commerce, Computer Science, Mathematics, Chemistry, Tamil, and English. Known for its research culture and competitive examination coaching, the college maintains a strong academic record and provides holistic development opportunities through an active Students' Union and cultural fest.",
-    highlights: ["15+ UG/PG programs", "Research culture", "Competitive exam coaching", "Cultural activities"],
   },
-  {
-    id: 2,
-    name: "Alagappa Institute of Technology",
-    location: "Karaikudi, Tamil Nadu",
-    affiliation: "Alagappa University",
-    logo: "/logos/algtechinst.png",
-    tag: "University",
-    description:
-      "Established by the Government of Tamil Nadu in 1985 on 450 acres of land donated by the Alagappa family, Alagappa University is recognised by the University Grants Commission. It houses 14 full-fledged departments offering postgraduate, M.Phil., and Ph.D. programmes spanning Education, Management, Sciences, Technology, Tamil, and Women's Studies. The Directorate of Distance Education, launched in 1992, serves thousands of off-campus learners across India.",
-    highlights: ["UGC Recognised", "450-acre campus", "Ph.D. programmes", "Distance education since 1992"],
-  },
+
  
 ];
 
@@ -422,25 +400,7 @@ function InstitutionCard({ institution, index }) {
           {institution.description}
         </p>
 
-        {/* Highlights chips */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-          {institution.highlights.map((h) => (
-            <span
-              key={h}
-              style={{
-                fontSize: "12px",
-                fontWeight: 600,
-                color: "#1a3a6b",
-                background: "rgba(74,158,255,0.1)",
-                border: "1px solid rgba(74,158,255,0.22)",
-                borderRadius: "20px",
-                padding: "4px 12px",
-              }}
-            >
-              {h}
-            </span>
-          ))}
-        </div>
+      
       </div>
     </div>
   );
@@ -508,7 +468,7 @@ const overviewCategories = [
   {
     tab: "professional",
     icon: Wrench,
-    label: "Professional & Vocational",
+    label: "Professional Institutions",
     count: professionalInstitutions.length,
     color: "#1a3a6b",
     accent: "rgba(26,58,107,0.1)",
