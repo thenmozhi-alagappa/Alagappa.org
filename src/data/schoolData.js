@@ -25,13 +25,17 @@ export const schoolData = {
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15712.917968574926!2d78.790121!3d10.080273!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0067e86716b275%3A0xa534fd376fcc03fb!2sAlagappa%20Trust%20Office!5e0!3m2!1sen!2sin!4v1783145635445!5m2!1sen!2sin"
   },
 
-  
+  // Web3Forms Configuration - Get free key from https://web3forms.com
+  web3forms: {
+    accessKey: "18c0ecc6-3e18-46a5-91a3-71e7163e5765"
+  },
+
   socialMedia: {
-    facebook: "https://facebook.com/brightfutureacademy",
-    twitter: "https://twitter.com/brightfuture",
-    instagram: "https://instagram.com/brightfutureacademy",
-    youtube: "https://youtube.com/brightfutureacademy",
-    linkedin: "https://linkedin.com/school/brightfutureacademy"
+    facebook: "https://www.facebook.com/people/Alagappa-Group-Of-Educational-Institutions/61578774906657/",
+    twitter: "https://x.com/Alagappagr14894",
+    instagram: "https://www.instagram.com/alagappagroups?igsh=MXR0NGJjbmI0YWI5Zw==",
+    youtube: "https://www.youtube.com/@thealagappagroup1288",
+    linkedin: "https://www.linkedin.com/in/alagappa-group-of-educational-institutions-a783573a5/"
   },
 
   leadership: [

@@ -46,27 +46,54 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Prepare form data for Web3Forms
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", schoolData.web3forms.accessKey);
+      formDataToSend.append("subject", `${formData.subject} - From ${formData.firstName} ${formData.lastName}`);
+      formDataToSend.append("from_name", `${formData.firstName} ${formData.lastName}`);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone || "");
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("to", schoolData.contact.email);
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    toast.success("Message sent successfully!", {
-      description: "We'll get back to you soon.",
-    });
+      // Send email using Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      subscribe: false,
-    });
+      const result = await response.json();
 
-    setTimeout(() => setSubmitted(false), 3000);
+      if (!result.success) {
+        throw new Error(result.message);
+      }
+
+      setSubmitted(true);
+      toast.success("Message sent successfully!", {
+        description: "We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        subscribe: false,
+      });
+
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      console.error("Web3Forms Error:", error);
+      toast.error("Failed to send message. Please try again.", {
+        description: "You can also email us directly at " + schoolData.contact.email,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field, value) => {
@@ -361,40 +388,6 @@ export default function Contact() {
                           />
                         </div>
                       </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="subject">Subject *</Label>
-                        <Select
-                          value={formData.subject}
-                          onValueChange={(value) =>
-                            handleChange("subject", value)
-                          }
-                          required
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a subject" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="admissions">
-                              Admissions
-                            </SelectItem>
-                            <SelectItem value="general">
-                              General Inquiry
-                            </SelectItem>
-                            <SelectItem value="feedback">
-                              Feedback
-                            </SelectItem>
-                            <SelectItem value="careers">
-                              Career Opportunities
-                            </SelectItem>
-                            <SelectItem value="volunteer">
-                              Volunteer
-                            </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
                       <div className="space-y-2">
                         <Label htmlFor="message">Message *</Label>
                         <Textarea
@@ -408,20 +401,6 @@ export default function Contact() {
                           required
                         />
                       </div>
-
-                      <div className="flex items-center space-x-2">
-                        <Checkbox
-                          id="subscribe"
-                          checked={formData.subscribe}
-                          onCheckedChange={(checked) =>
-                            handleChange("subscribe", checked)
-                          }
-                        />
-                        <Label htmlFor="subscribe" className="text-sm">
-                          Subscribe to our newsletter for updates and news
-                        </Label>
-                      </div>
-
                       <Button type="submit" className="w-full" disabled={isSubmitting}>
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>

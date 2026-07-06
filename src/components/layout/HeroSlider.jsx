@@ -13,7 +13,6 @@ const heroSlides = [
     alt: "Welcome to Smart Start Play School",
     label: "DO YOU NEED ANY HELP?",
     heading: "WELCOME TO\n Alagappa Groups\nof Educational Institutions",
-    cta: "READ MORE",
   },
   {
     id: 2,
@@ -21,7 +20,6 @@ const heroSlides = [
     alt: "Nurturing Every Young Mind",
     label: "EXCELLENCE IN EDUCATION",
     heading: "NURTURING\nEVERY YOUNG\nMIND DAILY",
-    cta: "READ MORE",
   },
   {
     id: 3,
@@ -29,7 +27,6 @@ const heroSlides = [
     alt: "Inspiring Creativity Every Day",
     label: "CREATIVE LEARNING",
     heading: "INSPIRING\nCREATIVITY\nEVERY DAY",
-    cta: "EXPLORE NOW",
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ const heroSlides = [
     alt: "Building Future Champions",
     label: "SPORTS & ACTIVITIES",
     heading: "BUILDING\nFUTURE\nCHAMPIONS",
-    cta: "READ MORE",
   },
 ];
 
@@ -154,38 +150,7 @@ export default function HeroSlider() {
                     {slide.heading}
                   </h1>
 
-                  {/* CTA Button */}
-                  <div>
-                    <button
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        background: "#004B8E",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "3px",
-                        padding: "11px 26px",
-                        fontSize: "0.78rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.14em",
-                        textTransform: "uppercase",
-                        cursor: "pointer",
-                        boxShadow: "0 4px 18px rgba(0,75,142,0.45)",
-                      }}
-                    >
-                      {slide.cta}
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                        <path
-                          d="M2 7h10M8 3l4 4-4 4"
-                          stroke="#fff"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+              
                 </div>
 
                 {/* BOTTOM INFO BAR */}
