@@ -23,7 +23,7 @@ const navigationItems = [
     href: "/about",
     children: [
       { title: "Management", href: "/about?tab=management" },
-      { title: "Trustees", href: "/about?tab=trustees" },
+      // { title: "Trustees", href: "/about?tab=trustees" },
       { title: "Letter from Management", href: "/about?tab=letter" },
       { title: "Vision & Mission", href: "/about?tab=mission" },
       { title: "Press Releases", href: "/about?tab=press" },
@@ -55,8 +55,8 @@ const navigationItems = [
     href: "/accomplishments",
     children: [
       { title: "Academics", href: "/accomplishments?tab=academics" },
-      { title: "Extracurricular", href: "/accomplishments?tab=extracurricular" },
-      { title: "Sports", href: "/accomplishments?tab=sports" },
+      // { title: "Extracurricular", href: "/accomplishments?tab=extracurricular" },
+      // { title: "Sports", href: "/accomplishments?tab=sports" },
       { title: "Admissions", href: "/accomplishments?tab=admissions" },
     ],
   },
@@ -180,7 +180,7 @@ export default function Navbar() {
                 <div className="contact-icon-wrap"><Phone size={18} weight="bold" /></div>
                 <div>
                   <div className="contact-label">Call Us</div>
-                  <div className="contact-value">{schoolData?.phone ?? "04565-225524"}</div>
+                  <div className="contact-value">{schoolData?.phone ?? "+91 4449971111"}</div>
                 </div>
               </div>
               <div style={{ width: "1px", height: "40px", background: "#e0e8f0" }} />
@@ -221,9 +221,9 @@ export default function Navbar() {
 
         {/* ── Mobile contact icon bar ── */}
         <div className="mobile-contact-bar">
-          <a href={`tel:${schoolData?.phone ?? "04565225524"}`} className="mobile-contact-item">
+          <a href={`tel:${schoolData?.phone ?? "+91 4449971111"}`} className="mobile-contact-item">
             <div className="mobile-contact-icon"><Phone size={16} weight="bold" /></div>
-            <span className="mobile-contact-text">{schoolData?.phone ?? "04565-225524"}</span>
+            <span className="mobile-contact-text">{schoolData?.phone ?? "+91 4449971111"}</span>
           </a>
           <a href={`mailto:${schoolData?.email ?? "info@alagappa.org"}`} className="mobile-contact-item">
             <div className="mobile-contact-icon"><Envelope size={16} weight="bold" /></div>

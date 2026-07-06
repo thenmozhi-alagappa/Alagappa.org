@@ -31,16 +31,16 @@ const academicHighAchievers = {
         { id: 3, name: "E. Jessica", score: "566/600",  rank: "3rd", image: "/Toppers/MatricKKd/12th/jessica.png" },
       ]
     },
-    // {
-    //   id: 2,
-    //   name: "Alagappa CBSE School",
-    //   location: "Karaikudi, Tamil Nadu",
-    //   toppers: [
-    //     { id: 1, name: "Karthik Raja", score: "596/600", percentage: "99.33%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face" },
-    //     { id: 2, name: "Divya Lakshmi", score: "594/600", percentage: "99.00%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" },
-    //     { id: 3, name: "Arun Kumar", score: "590/600", percentage: "98.33%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face" },
-    //   ]
-    // },
+    {
+      id: 2,
+      name: "Alagappa CBSE School",
+      location: "Karaikudi, Tamil Nadu",
+      toppers: [
+        { id: 1, name: "VIGNESH RAJA PLACE I (452)", score: "452/500", rank: "1st", image: "/Toppers/CbseKKd/12th/VIGNESH RAJA PLACE I (452).jpg" },
+        { id: 2, name: "NIHIL RAM J  Place II (449)", score: "449/500",  rank: "2nd", image: "/Toppers/CbseKKd/12th/NIHIL RAM J  Place II (449).jpg" },
+        { id: 3, name: "SREE MEENA  PLACE  III  (446)", score: "446/500",  rank: "3rd", image: "/Toppers/CbseKKd/12th/SREE MEENA  PLACE  III  (446).jpg" },
+      ]
+    },
     {
       id: 3,
       name: "Alagappa Girls Higher Secondary School",
@@ -51,16 +51,16 @@ const academicHighAchievers = {
         { id: 3, name: "S. Amudhini", score: "550/600", rank: "3rd", image: "/Toppers/GirlsKKd/12th/amudhini.jpeg" },
       ]
     },
-    // {
-    //   id: 4,
-    //   name: "Alagappa Matriculation School",
-    //   location: "Chennai, Tamil Nadu",
-    //   toppers: [
-    //     { id: 1, name: "Vijay Kumar", score: "597/600", percentage: "99.50%", stream: "Science - PCM", rank: "1st", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" },
-    //     { id: 2, name: "Anitha Devi", score: "593/600", percentage: "98.83%", stream: "Science - PCB", rank: "2nd", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face" },
-    //     { id: 3, name: "Suresh Babu", score: "589/600", percentage: "98.17%", stream: "Commerce", rank: "3rd", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face" },
-    //   ]
-    // },
+    {
+      id: 4,
+      name: "Alagappa Matriculation School",
+      location: "Chennai, Tamil Nadu",
+      toppers: [
+        { id: 1, name: "Aasim Khan Y", score: "570/600",rank: "1st", image: "/Toppers/MatricChn/12th/Aasimkhan.jpeg" },
+        { id: 2, name: "Gowri Sankar M", score: "552/600", rank: "2nd", image: "/Toppers/MatricChn/12th/gaurishankar.jpeg" },
+        { id: 3, name: "Somanth Jalinder Chavan", score: "549/600",  rank: "3rd", image: "/Toppers/MatricChn/12th/somanth.jpeg" },
+      ]
+    },
   ]
 };
 
@@ -81,6 +81,16 @@ const academic10thToppers = {
         { id: 3, name: "S. Abhishek", score: "478/500", rank: "3rd", image: "/Toppers/MatricKKd/10th/abishek.jpg" },
       ]
     },
+     {
+      id: 2,
+      name: "Alagappa CBSE School",
+      location: "Karaikudi, Tamil Nadu",
+      toppers: [
+        { id: 1, name: "G S FIONA PLACE", score: "468/500", rank: "1st", image: "/Toppers/CbseKKd/10th/G S FIONA PLACE I (553).jpeg" },
+        { id: 2, name: "PRITHIV RAVINDRAN", score: "467/500",  rank: "2nd", image: "/Toppers/CbseKKd/10th/PRITHIV RAVINDRAN   PLACE II ( 554).jpg" },
+        { id: 3, name: "VIJI.K", score: "454/500",  rank: "3rd", image: "/Toppers/CbseKKd/10th/VIJI.K   PLACE III(532).jpg" },
+      ]
+    },
     {
       id: 3,
       name: "Alagappa Girls Higher Secondary School",
@@ -90,7 +100,17 @@ const academic10thToppers = {
         { id: 2, name: "K. Nithya Sri", score: "480/500", rank: "2nd", image: "/Toppers/GirlsKKd/10th/nithyasree.jpeg" },
         { id: 3, name: "S. Surjetha", score: "468/500", rank: "3rd", image: "/Toppers/GirlsKKd/10th/surjeetha.jpeg" },
       ]
-    }
+    },
+     {
+      id: 4,
+      name: "Alagappa Matriculation School",
+      location: "Chennai, Tamil Nadu",
+      toppers: [
+        { id: 1, name: "Pavan Kumar S", score: "473/500",rank: "1st", image: "/Toppers/MatricChn/10th/pavankumar.jpeg" },
+        { id: 2, name: "KayalVizhi K", score: "465/500", rank: "2nd", image: "/Toppers/MatricChn/10th/kayalvizhi.jpeg" },
+        { id: 3, name: "Deepesh N", score: "460/500",  rank: "3rd", image: "/Toppers/MatricChn/10th/deepesh.jpeg" },
+      ]
+    },
   ]
 };
 
@@ -267,8 +287,8 @@ const TAB_META = {
 
 const subNavItems = [
   { label: "Academics", tab: "academics" },
-  { label: "Extracurricular", tab: "extracurricular" },
-  { label: "Sports", tab: "sports" },
+  // { label: "Extracurricular", tab: "extracurricular" },
+  // { label: "Sports", tab: "sports" },
   { label: "Admissions", tab: "admissions" }
 ];
 

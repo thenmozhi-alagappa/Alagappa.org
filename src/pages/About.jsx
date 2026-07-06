@@ -58,7 +58,7 @@ const TAB_META = {
 
 const subNavItems = [
   { label: "Management", tab: "management" },
-  { label: "Trustees", tab: "trustees" },
+  // { label: "Trustees", tab: "trustees" },
   { label: "Letter from Management", tab: "letter" },
   { label: "Vision & Mission", tab: "mission" },
   { label: "Press Releases", tab: "press" },

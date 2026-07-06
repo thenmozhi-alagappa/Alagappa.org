@@ -49,17 +49,15 @@ const galleryInstitutions = [
     tag: "Higher Secondary",
     events: [
       { id: 4, title: "School Images", date: "2026-03-20", type: "Academic" },
-      { id: 5, title: "Tech Fest", date: "2026-02-15", type: "Technical" },
     ],
   },
    {
     id: 7,
     name: "Alagappa Matric Hr. Sec School",
-    location: "Karaikudi, Tamil Nadu",
+    location: "Chennai, Tamil Nadu",
     tag: "Higher Secondary",
     events: [
-      { id: 14, title: "Graduation Ceremony", date: "2026-03-20", type: "Academic" },
-      { id: 15, title: "Tech Fest", date: "2026-02-15", type: "Technical" },
+      { id: 14, title: "School Infrastructures", date: "2026-03-20", type: "Academic" },
     ],
   },
   {
@@ -68,8 +66,7 @@ const galleryInstitutions = [
     location: "Karaikudi, Tamil Nadu",
     tag: "Girls' School",
     events: [
-      { id: 6, title: "Women's Day Celebration", date: "2026-03-08", type: "Cultural" },
-      { id: 7, title: "Art Exhibition", date: "2026-01-25", type: "Arts" },
+      { id: 6, title: "Achievers", date: "2026-03-08", type: "Cultural" },
     ],
   },
   {
@@ -125,14 +122,29 @@ const eventMedia = {
     { id: 405, type: "image", src: "/Gallery/MatricKKD/Students/stud5.jpeg", alt: "Students" },
     { id: 406, type: "image", src: "/Gallery/MatricKKD/Students/stud6.jpeg", alt: "Students" },
   ],
-  5: [ // Tech Fest
-    { id: 501, type: "image", src: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop", alt: "Tech Exhibition" },
+ 
+  14: [ // School Infrastructures
+    { id: 601, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/Annualday.png", alt: "School Infrastructure" },
+    { id: 602, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/chemlab.png", alt: "School Infrastructure" },
+    { id: 603, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/chemlab1.png", alt: "School Infrastructure" },
+    { id: 604, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/classroom.png", alt: "School Infrastructure" },
+    { id: 605, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/classroom1.png", alt: "School Infrastructure" },
+    { id: 606, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/classroom2.png", alt: "School Infrastructure" },
+    { id: 607, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/classroom4.png", alt: "School Infrastructure" },
+    { id: 608, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/comlab.png", alt: "School Infrastructure" },
+    { id: 609, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/comlab1.png", alt: "School Infrastructure" },
+    { id: 6010, type: "image", src: "/Gallery/ChennaiSchl/Infrastructures/comlap3.png", alt: "School Infrastructure" },
   ],
-  6: [ // Women's Day
-    { id: 601, type: "image", src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=600&fit=crop", alt: "Women's Day Event" },
-  ],
-  7: [ // Art Exhibition
-    { id: 701, type: "image", src: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=600&fit=crop", alt: "Art Display" },
+  6: [ // Art Exhibition
+    { id: 701, type: "image", src: "/Gallery/GirlsSchl/Achievers/L. Nithin Anusiya.png", alt: "Achievers" },
+    { id: 702, type: "image", src: "/Gallery/GirlsSchl/Achievers/PATTAM QUIZ COMPETITION.jpg", alt: "Achievers" },
+    { id: 703, type: "image", src: "/Gallery/GirlsSchl/Achievers/Primary Award Ceremony.jpeg", alt: "Achievers" },
+    { id: 704, type: "image", src: "/Gallery/GirlsSchl/Achievers/silambam.jpeg", alt: "Achievers" },
+    { id: 705, type: "image", src: "/Gallery/GirlsSchl/Achievers/STEMIFON COMPETITION 1.jpg", alt: "Achievers" },
+    { id: 706, type: "image", src: "/Gallery/GirlsSchl/Achievers/STEMIFON COMPETITION 2.jpg", alt: "Achievers" },
+    { id: 707, type: "image", src: "/Gallery/GirlsSchl/Achievers/TRITHIYA SOPAN CAMP.jpg", alt: "Achievers" },
+    { id: 701, type: "image", src: "/Gallery/GirlsSchl/Achievers/zonal.jpeg", alt: "Achievers" },
+
   ],
   8: [ // Tech Symposium
     { id: 801, type: "image", src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop", alt: "Symposium" },
@@ -457,31 +469,41 @@ export default function Gallery() {
               Events at {selectedInstitution.name}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {selectedInstitution.events.map((event) => {
-                const mediaCount = eventMedia[event.id]?.length || 0;
+                const eventMediaItems = eventMedia[event.id] || [];
+                const mediaCount = eventMediaItems.length;
+                const thumbnail = eventMediaItems[0];
 
                 return (
                   <Card
                     key={event.id}
-                    className="group cursor-pointer overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    className="pt-0 group cursor-pointer overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                     onClick={() => navigateTo("gallery", { institution: institutionId, event: event.id })}
                   >
-                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
-                      <Calendar size={48} className="text-blue-300" />
+                    <div className="pt-0  bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center overflow-hidden">
+                      {thumbnail ? (
+                        <img
+                          src={thumbnail.src}
+                          alt={thumbnail.alt || event.title}
+                          className=" object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                        />
+                      ) : (
+                        <Calendar size={36} className="text-blue-300" />
+                      )}
                     </div>
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-2">
+                    <CardContent className="p-3">
+                      <div className="flex items-center gap-2 mb-1.5">
                         <Badge variant="secondary" className="text-xs">
                           {event.type}
                         </Badge>
-                        <span className="text-sm text-muted-foreground">
+                        <span className="text-xs text-muted-foreground">
                           {new Date(event.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </span>
                       </div>
-                      <h3 className="font-semibold text-lg mb-2">{event.title}</h3>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <Image size={14} />
+                      <h3 className="font-semibold text-base mb-1.5">{event.title}</h3>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Image size={12} />
                         <span>{mediaCount} {mediaCount === 1 ? "item" : "items"}</span>
                       </div>
                     </CardContent>
