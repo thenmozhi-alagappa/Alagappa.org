@@ -20,7 +20,7 @@ export const schoolData = {
 
   contact: {
     address: "Karaikudi, Tamil Nadu",
-    phone: "+91 4449971111",
+    phone: "04565231151",
     email: "info@alagappa.org",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15712.917968574926!2d78.790121!3d10.080273!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0067e86716b275%3A0xa534fd376fcc03fb!2sAlagappa%20Trust%20Office!5e0!3m2!1sen!2sin!4v1783145635445!5m2!1sen!2sin"
   },
