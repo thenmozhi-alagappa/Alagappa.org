@@ -1,4 +1,4 @@
-import { Bank, CreditCard, Heart, Money, QrCode, Sparkle } from "phosphor-react";
+import { Bank, CreditCard, Heart, Money, Sparkle } from "phosphor-react";
 
 const donationDetails = {
   usa: {
@@ -21,7 +21,7 @@ export default function Donate() {
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,_#f5f8fc_0%,_#eef5ff_100%)] text-slate-800">
       <section className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div className="grid gap-10 lg:items-start">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-[#cfe0f5] bg-white/90 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-[#0057b8] shadow-sm">
               <Heart size={16} weight="fill" />
@@ -53,28 +53,6 @@ export default function Donate() {
               </ul>
             </div>
           </div>
-
-          <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-[0_20px_70px_rgba(0,0,0,0.08)]">
-            <div className="flex items-center gap-3 text-[#0057b8]">
-              <div className="rounded-2xl bg-[#eef6ff] p-3">
-                <QrCode size={24} weight="duotone" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Scan to donate</p>
-                <h2 className="text-xl font-bold text-slate-900">QR code payment</h2>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-center rounded-[24px] border border-dashed border-slate-300 bg-[#f8fbff] p-6">
-              <img
-                src="/Donate.jpg"
-                alt="Alagappa donation QR code"
-                className="h-64 w-64 rounded-2xl object-contain shadow-sm"
-              />
-            </div>
-            <p className="mt-4 text-center text-sm leading-7 text-slate-500">
-              Scan the QR code to make a contribution using your preferred payment app.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -89,7 +67,7 @@ export default function Donate() {
               <div className="rounded-[20px] border border-dashed border-slate-300 bg-[#f8fbff] p-4 text-center">
                 <p className="font-semibold text-slate-900">Scan QR to donate</p>
                 <div className="mt-3 flex justify-center">
-                  <img src="/Donate.jpg" alt="USA donation QR" className="h-36 w-36 rounded-2xl object-contain bg-white p-2 shadow-sm" />
+                  <img src="/donate/donate_qr_usa.png" alt="USA donation QR" className="h-56 w-56 rounded-2xl object-contain bg-white p-2 shadow-sm" />
                 </div>
               </div>
               <div>
@@ -118,7 +96,7 @@ export default function Donate() {
               <div className="rounded-[20px] border border-dashed border-slate-300 bg-[#f8fbff] p-4 text-center">
                 <p className="font-semibold text-slate-900">Scan QR to donate</p>
                 <div className="mt-3 flex justify-center">
-                  <img src="/Donate.jpg" alt="India donation QR" className="h-36 w-36 rounded-2xl object-contain bg-white p-2 shadow-sm" />
+                  <img src="/donate/donate_qr_india.jpg" alt="India donation QR" className="h-56 w-56 rounded-2xl object-contain bg-white p-2 shadow-sm" />
                 </div>
               </div>
               <div>

@@ -23,7 +23,7 @@ const academicHighAchievers = {
   schools: [
     {
       id: 1,
-      name: "Alagappa Matriculation Higher Secondary School",
+      name: "Alagappa Matriculation Higher Secondary School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "AL. Meiyammai", score: "593/600", rank: "1st", image: "/Toppers/MatricKKd/12th/ALMeiyammai.png" },
@@ -33,7 +33,7 @@ const academicHighAchievers = {
     },
     {
       id: 2,
-      name: "Alagappa CBSE School",
+      name: "Alagappa CBSE School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "VIGNESH RAJA PLACE I (452)", score: "452/500", rank: "1st", image: "/Toppers/CbseKKd/12th/VIGNESH RAJA PLACE I (452).jpg" },
@@ -43,7 +43,7 @@ const academicHighAchievers = {
     },
     {
       id: 3,
-      name: "Alagappa Girls Higher Secondary School",
+      name: "Alagappa Girls Higher Secondary School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "N. Vadivu", score: "568/600", rank: "1st", image: "/Toppers/GirlsKKd/12th/vadivu.jpeg" },
@@ -53,7 +53,7 @@ const academicHighAchievers = {
     },
     {
       id: 4,
-      name: "Alagappa Matriculation School",
+      name: "Alagappa Matriculation School (2025-26)",
       location: "Chennai, Tamil Nadu",
       toppers: [
         { id: 1, name: "Aasim Khan Y", score: "570/600",rank: "1st", image: "/Toppers/MatricChn/12th/Aasimkhan.jpeg" },
@@ -73,7 +73,7 @@ const academic10thToppers = {
   schools: [
     {
       id: 1,
-      name: "Alagappa Matriculation Higher Secondary School",
+      name: "Alagappa Matriculation Higher Secondary School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "S.S. Nandakishore", score: "487/500", rank: "1st", image: "/Toppers/MatricKKd/10th/nandakishore.jpg" },
@@ -83,7 +83,7 @@ const academic10thToppers = {
     },
      {
       id: 2,
-      name: "Alagappa CBSE School",
+      name: "Alagappa CBSE School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "G S FIONA PLACE", score: "468/500", rank: "1st", image: "/Toppers/CbseKKd/10th/G S FIONA PLACE I (553).jpeg" },
@@ -93,7 +93,7 @@ const academic10thToppers = {
     },
     {
       id: 3,
-      name: "Alagappa Girls Higher Secondary School",
+      name: "Alagappa Girls Higher Secondary School (2025-26)",
       location: "Karaikudi, Tamil Nadu",
       toppers: [
         { id: 1, name: "R. Harini Shri", score: "486/500",  rank: "1st", image: "/Toppers/GirlsKKd/10th/harinisri.jpeg" },
@@ -103,7 +103,7 @@ const academic10thToppers = {
     },
      {
       id: 4,
-      name: "Alagappa Matriculation School",
+      name: "Alagappa Matriculation School (2025-26)",
       location: "Chennai, Tamil Nadu",
       toppers: [
         { id: 1, name: "Pavan Kumar S", score: "473/500",rank: "1st", image: "/Toppers/MatricChn/10th/pavankumar.jpeg" },
@@ -769,9 +769,9 @@ export default function Accomplishments() {
                 <div style={{ display: "flex", justifyContent: "center", gap: "32px", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
                   {school.toppers.map((student) => {
                     const rankStyles = {
-                      "1st": { ribbon: "linear-gradient(90deg, #4a9eff, #1a3a6b)", ribbonText: "#fff", label: "School First" },
-                      "2nd": { ribbon: "linear-gradient(90deg, #85b7eb, #378add)", ribbonText: "#042c53", label: "School Second" },
-                      "3rd": { ribbon: "linear-gradient(90deg, #185fa5, #042c53)", ribbonText: "#fff", label: "School Third" }
+                      "1st": { ribbon: "linear-gradient(90deg, #4a9eff, #1a3a6b)", ribbonText: "#fff" },
+                      "2nd": { ribbon: "linear-gradient(90deg, #85b7eb, #378add)", ribbonText: "#042c53" },
+                      "3rd": { ribbon: "linear-gradient(90deg, #185fa5, #042c53)", ribbonText: "#fff" }
                     };
                     const rs = rankStyles[student.rank] || rankStyles["1st"];
                     const [scoreNum, scoreDen] = student.score.split("/");
