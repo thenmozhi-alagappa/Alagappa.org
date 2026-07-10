@@ -61,7 +61,9 @@ const navigationItems = [
     ],
   },
   { title: "Gallery", href: "/gallery" },
+  { title: "Inspire Zone", href: "/inspire-zone" },
   { title: "Contact", href: "/contact" },
+  { title: "Donate", href: "/donate" },
   { title: "Admissions", href: "https://forms.gle/h9xPSTVEQcnBfvoa8", button: true, external: true },
   { title: "Donate", href: "/donate", button: true },
 ];

@@ -229,7 +229,7 @@ export default function Footer() {
               Stay updated with the latest news, events, and announcements from Alagappa Group.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <input
+             {/* <input
                 type="email"
                 placeholder="Enter your email address"
                 style={{
@@ -239,8 +239,9 @@ export default function Footer() {
                   borderRadius: "8px", color: "#fff", outline: "none",
                   boxSizing: "border-box",
                 }}
-              />
-              <button
+              /> */}
+              <a href="https://forms.gle/rYn4t1kbgjAP4x9F6" style={{ color: "#fff", textDecoration: "none" }}>
+               <button
                 style={{
                   width: "100%", padding: "10px 14px", fontSize: "13px", fontWeight: 700,
                   background: "#004B8E", color: "#fff", border: "none",
@@ -250,8 +251,9 @@ export default function Footer() {
                 onMouseEnter={e => (e.currentTarget.style.background = "#0066c2")}
                 onMouseLeave={e => (e.currentTarget.style.background = "#004B8E")}
               >
-                Subscribe
-              </button>
+               Subscribe
+              
+              </button></a>
             </div>
           </div>
 

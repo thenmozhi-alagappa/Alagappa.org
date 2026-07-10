@@ -11,6 +11,8 @@ import Contact from "./pages/Contact";
 import Founder from "./pages/Founder";
 import Institutions from "./pages/Institutions";
 import Accomplishments from "./pages/Accomplishments";
+import InspireZone from "./pages/InspireZone";
+import Donate from "./pages/Donate";
 import "./index.css";
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
           <Route path="news" element={<News />} />
           <Route path="members" element={<Members />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="inspire-zone" element={<InspireZone />} />
+          <Route path="donate" element={<Donate />} />
         </Route>
       </Routes>
     </BrowserRouter>
